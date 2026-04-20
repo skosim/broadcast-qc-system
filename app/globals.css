@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 154 18% 8%;
+  --foreground: 156 15% 92%;
+  --card: 156 16% 10%;
+  --card-foreground: 156 15% 92%;
+  --primary: 145 63% 44%;
+  --primary-foreground: 145 60% 6%;
+  --secondary: 154 16% 14%;
+  --secondary-foreground: 156 15% 92%;
+  --muted: 156 14% 15%;
+  --muted-foreground: 156 10% 66%;
+  --accent: 146 34% 18%;
+  --accent-foreground: 147 64% 82%;
+  --destructive: 0 68% 56%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 153 15% 21%;
+  --input: 153 15% 21%;
+}
+
+* {
+  border-color: hsl(var(--border));
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  background: #000000;
+  color: hsl(var(--foreground));
+  font-family: "Avenir Next", "Segoe UI", "Helvetica Neue", sans-serif;
+}
+
+.app-shell {
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 48px 48px;
+  background-color: #000000;
+}
+
+::selection {
+  background: rgba(55, 211, 131, 0.24);
+}
+
+body::-webkit-scrollbar {
+  width: 10px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: rgba(80, 110, 96, 0.8);
+  border-radius: 999px;
+}

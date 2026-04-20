@@ -1,0 +1,468 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum MatchStatus {
+  upcoming
+  live
+  finished
+}
+
+enum BroadcastSource {
+  fnl
+  vk_video
+  manual
+}
+
+enum BroadcastMatchMode {
+  auto_exact
+  high_confidence_auto_match
+  requires_review
+  manual_confirmed
+  manual_replaced
+  rejected
+  none
+}
+
+enum IssueStatus {
+  new
+  in_review
+  resolved
+  archived
+}
+
+enum SyncStatus {
+  queued
+  processing
+  completed
+  failed
+}
+
+enum BroadcastLinkKind {
+  fnl_match_page
+  direct_stream
+  manual_stream
+}
+
+enum StadiumFileKind {
+  camera_plan
+  gallery
+  coordination
+  other
+}
+
+enum SourceSystem {
+  fnl_pro
+  vk_video
+  google_sheets
+  yandex_disk
+  manual
+}
+
+enum StadiumRemarkStatus {
+  draft
+  confirmed
+  resolved
+  archived
+}
+
+model Season {
+  id                    String                   @id @default(cuid())
+  name                  String                   @unique
+  slug                  String                   @unique
+  isCurrent             Boolean                  @default(false)
+  startedAt             DateTime
+  endedAt               DateTime
+
+  matches               Match[]
+  broadcastIssues       BroadcastIssue[]
+  dataSyncJobs          DataSyncJob[]
+  sourceSnapshots       ExternalSourceSnapshot[]
+
+  createdAt             DateTime                 @default(now())
+  updatedAt             DateTime                 @updatedAt
+
+  @@index([isCurrent])
+}
+
+model League {
+  id                    String                   @id @default(cuid())
+  code                  String                   @unique
+  name                  String
+  shortName             String?
+  orderIndex            Int                      @default(0)
+
+  groups                LeagueGroup[]
+  clubs                 Club[]
+  matches               Match[]
+
+  createdAt             DateTime                 @default(now())
+  updatedAt             DateTime                 @updatedAt
+
+  @@index([orderIndex])
+  @@index([name])
+}
+
+model LeagueGroup {
+  id                    String                   @id @default(cuid())
+  leagueId              String
+  code                  String
+  name                  String
+  orderIndex            Int                      @default(0)
+
+  league                League                   @relation(fields: [leagueId], references: [id], onDelete: Cascade)
+  clubs                 Club[]
+  matches               Match[]
+
+  createdAt             DateTime                 @default(now())
+  updatedAt             DateTime                 @updatedAt
+
+  @@unique([leagueId, code])
+  @@index([leagueId])
+  @@index([orderIndex])
+}
+
+model Club {
+  id                    String                   @id @default(cuid())
+  leagueId              String
+  leagueGroupId         String?
+  slug                  String                   @unique
+  name                  String
+  nameNormalized        String
+  shortName             String?
+  aliasesJson           String?
+  city                  String?
+
+  league                League                   @relation(fields: [leagueId], references: [id], onDelete: Cascade)
+  leagueGroup           LeagueGroup?             @relation(fields: [leagueGroupId], references: [id], onDelete: SetNull)
+  stadium               Stadium?
+  aliases               ClubAlias[]
+  homeMatches           Match[]                  @relation("HomeClub")
+  awayMatches           Match[]                  @relation("AwayClub")
+  broadcastIssues       BroadcastIssue[]
+  stadiumFiles          StadiumFile[]
+
+  createdAt             DateTime                 @default(now())
+  updatedAt             DateTime                 @updatedAt
+
+  @@index([leagueId])
+  @@index([leagueGroupId])
+  @@index([name])
+  @@index([nameNormalized])
+}
+
+model ClubAlias {
+  id                    String                   @id @default(cuid())
+  clubId                String
+  alias                 String
+  aliasNormalized       String
+  isPrimary             Boolean                  @default(false)
+  sourceSystem          SourceSystem             @default(manual)
+
+  club                  Club                     @relation(fields: [clubId], references: [id], onDelete: Cascade)
+
+  createdAt             DateTime                 @default(now())
+  updatedAt             DateTime                 @updatedAt
+
+  @@unique([clubId, aliasNormalized])
+  @@index([clubId])
+  @@index([aliasNormalized])
+}
+
+model Stadium {
+  id                    String                   @id @default(cuid())
+  clubId                String                   @unique
+  name                  String
+  city                  String?
+  address               String?
+  capacity              Int?
+  surfaceType           String?
+  certificateNumber     String?
+  certificateValidFrom  DateTime?
+  certificateValidTo    DateTime?
+  category              String?
+  delegateNotes         String?
+
+  club                  Club                     @relation(fields: [clubId], references: [id], onDelete: Cascade)
+  matches               Match[]
+  files                 StadiumFile[]
+  remarks               StadiumRemark[]
+
+  createdAt             DateTime                 @default(now())
+  updatedAt             DateTime                 @updatedAt
+
+  @@index([name])
+  @@index([city])
+  @@index([category])
+}
+
+model Match {
+  id                    String                   @id @default(cuid())
+  seasonId              String
+  leagueId              String
+  leagueGroupId         String?
+  homeClubId            String
+  awayClubId            String
+  stadiumId             String?
+  externalMatchId       String?                  @unique
+  canonicalKey          String?                  @unique
+  roundLabel            String?
+  kickoffAt             DateTime
+  matchDate             DateTime?
+  matchTime             String?
+  fnlMatchUrl           String?
+  status                MatchStatus
+  broadcastUrl          String?
+  broadcastSource       BroadcastSource?
+  broadcastMatchMode    BroadcastMatchMode       @default(none)
+  broadcastConfidence   Float?
+  broadcastReviewReason String?
+  broadcastMatchedManually Boolean               @default(false)
+  broadcastLocked       Boolean                  @default(false)
+  lastCheckedAt         DateTime?
+  delegateName          String?
+  videoDelegateName     String?
+  inspectorName         String?
+  refereeName           String?
+
+  season                Season                   @relation(fields: [seasonId], references: [id], onDelete: Cascade)
+  league                League                   @relation(fields: [leagueId], references: [id], onDelete: Cascade)
+  leagueGroup           LeagueGroup?             @relation(fields: [leagueGroupId], references: [id], onDelete: SetNull)
+  homeClub              Club                     @relation("HomeClub", fields: [homeClubId], references: [id], onDelete: Cascade)
+  awayClub              Club                     @relation("AwayClub", fields: [awayClubId], references: [id], onDelete: Cascade)
+  stadium               Stadium?                 @relation(fields: [stadiumId], references: [id], onDelete: SetNull)
+  broadcastLinks        BroadcastLink[]
+  broadcastIssues       BroadcastIssue[]
+
+  createdAt             DateTime                 @default(now())
+  updatedAt             DateTime                 @updatedAt
+
+  @@index([seasonId, kickoffAt])
+  @@index([leagueId, kickoffAt])
+  @@index([canonicalKey])
+  @@index([homeClubId])
+  @@index([awayClubId])
+  @@index([status])
+  @@index([broadcastMatchMode])
+}
+
+model BroadcastLink {
+  id                    String                   @id @default(cuid())
+  matchId               String
+  kind                  BroadcastLinkKind
+  provider              String?
+  url                   String
+  isPrimary             Boolean                  @default(false)
+
+  match                  Match                   @relation(fields: [matchId], references: [id], onDelete: Cascade)
+
+  createdAt             DateTime                 @default(now())
+  updatedAt             DateTime                 @updatedAt
+
+  @@index([matchId])
+  @@index([kind])
+}
+
+model Tag {
+  id                    String                   @id @default(cuid())
+  code                  String                   @unique
+  labelRu               String
+  description           String?
+  scope                 String                   @default("broadcast")
+  isSystem              Boolean                  @default(true)
+
+  broadcastIssueTags    BroadcastIssueTag[]
+  stadiumRemarks        StadiumRemark[]
+
+  createdAt             DateTime                 @default(now())
+  updatedAt             DateTime                 @updatedAt
+
+  @@index([labelRu])
+  @@index([scope])
+}
+
+model BroadcastIssue {
+  id                    String                   @id @default(cuid())
+  clubId                String
+  seasonId              String
+  matchId               String?
+  sourceSystem          SourceSystem             @default(manual)
+  sourceReference       String?
+  roundLabel            String?
+  rawDescription        String?
+  normalizedSummary     String?
+  status                IssueStatus              @default(new)
+  createdBy             String?
+  resolvedAt            DateTime?
+  resolvedBy            String?
+  resolutionType        String?
+  resolutionComment     String?
+  resolutionSource      String?
+  isRecurring           Boolean                  @default(false)
+  recurringKey          String?
+
+  club                  Club                     @relation(fields: [clubId], references: [id], onDelete: Cascade)
+  season                Season                   @relation(fields: [seasonId], references: [id], onDelete: Cascade)
+  match                 Match?                   @relation(fields: [matchId], references: [id], onDelete: SetNull)
+  issueTags             BroadcastIssueTag[]
+  history               BroadcastIssueHistory[]
+  resolvedLog           ResolvedIssueLog?
+
+  createdAt             DateTime                 @default(now())
+  updatedAt             DateTime                 @updatedAt
+
+  @@index([clubId, seasonId])
+  @@index([matchId])
+  @@index([status])
+  @@index([recurringKey])
+}
+
+model BroadcastIssueTag {
+  id                    String                   @id @default(cuid())
+  issueId               String
+  tagId                 String
+  isPrimary             Boolean                  @default(false)
+
+  issue                 BroadcastIssue           @relation(fields: [issueId], references: [id], onDelete: Cascade)
+  tag                   Tag                      @relation(fields: [tagId], references: [id], onDelete: Cascade)
+
+  createdAt             DateTime                 @default(now())
+
+  @@unique([issueId, tagId])
+  @@index([issueId])
+  @@index([tagId])
+}
+
+model BroadcastIssueHistory {
+  id                    String                   @id @default(cuid())
+  issueId               String
+  actionType            String
+  fieldName             String?
+  oldValue              String?
+  newValue              String?
+  comment               String?
+  actorName             String
+
+  issue                 BroadcastIssue           @relation(fields: [issueId], references: [id], onDelete: Cascade)
+
+  createdAt             DateTime                 @default(now())
+
+  @@index([issueId])
+  @@index([createdAt])
+}
+
+model ResolvedIssueLog {
+  id                    String                   @id @default(cuid())
+  issueId               String                   @unique
+  resolvedAt            DateTime
+  resolvedBy            String
+  resolutionType        String?
+  resolutionComment     String?
+  resolutionSource      String?
+
+  issue                 BroadcastIssue           @relation(fields: [issueId], references: [id], onDelete: Cascade)
+
+  createdAt             DateTime                 @default(now())
+}
+
+model StadiumFile {
+  id                    String                   @id @default(cuid())
+  clubId                String
+  stadiumId             String
+  syncJobId             String?
+  kind                  StadiumFileKind
+  sourceSystem          SourceSystem             @default(manual)
+  filename              String
+  originalName          String
+  filePath              String
+  mimeType              String
+  extractedText         String?
+  sourceUrl             String?
+  comment               String?
+
+  club                  Club                     @relation(fields: [clubId], references: [id], onDelete: Cascade)
+  stadium               Stadium                  @relation(fields: [stadiumId], references: [id], onDelete: Cascade)
+  syncJob               DataSyncJob?             @relation(fields: [syncJobId], references: [id], onDelete: SetNull)
+  remarks               StadiumRemark[]
+
+  createdAt             DateTime                 @default(now())
+  updatedAt             DateTime                 @updatedAt
+
+  @@index([clubId])
+  @@index([stadiumId])
+  @@index([kind])
+}
+
+model StadiumRemark {
+  id                    String                   @id @default(cuid())
+  stadiumId             String
+  sourceFileId          String?
+  tagId                 String?
+  rawText               String
+  normalizedText        String
+  status                StadiumRemarkStatus      @default(draft)
+  sourceSystem          SourceSystem             @default(manual)
+
+  stadium               Stadium                  @relation(fields: [stadiumId], references: [id], onDelete: Cascade)
+  sourceFile            StadiumFile?             @relation(fields: [sourceFileId], references: [id], onDelete: SetNull)
+  tag                   Tag?                     @relation(fields: [tagId], references: [id], onDelete: SetNull)
+
+  createdAt             DateTime                 @default(now())
+  updatedAt             DateTime                 @updatedAt
+
+  @@index([stadiumId])
+  @@index([sourceFileId])
+  @@index([status])
+}
+
+model DataSyncJob {
+  id                    String                   @id @default(cuid())
+  seasonId              String?
+  sourceSystem          SourceSystem
+  jobType               String
+  status                SyncStatus               @default(queued)
+  startedAt             DateTime?
+  finishedAt            DateTime?
+  itemsFound            Int                      @default(0)
+  itemsCreated          Int                      @default(0)
+  itemsUpdated          Int                      @default(0)
+  itemsFlagged          Int                      @default(0)
+  detailsJson           String?
+  errorMessage          String?
+
+  season                Season?                  @relation(fields: [seasonId], references: [id], onDelete: SetNull)
+  stadiumFiles          StadiumFile[]
+  snapshots             ExternalSourceSnapshot[]
+
+  createdAt             DateTime                 @default(now())
+  updatedAt             DateTime                 @updatedAt
+
+  @@index([seasonId])
+  @@index([sourceSystem])
+  @@index([status])
+}
+
+model ExternalSourceSnapshot {
+  id                    String                   @id @default(cuid())
+  seasonId              String?
+  syncJobId             String?
+  sourceSystem          SourceSystem
+  entityType            String
+  externalKey           String
+  payloadJson           String
+
+  season                Season?                  @relation(fields: [seasonId], references: [id], onDelete: SetNull)
+  syncJob               DataSyncJob?             @relation(fields: [syncJobId], references: [id], onDelete: SetNull)
+
+  createdAt             DateTime                 @default(now())
+
+  @@index([seasonId])
+  @@index([syncJobId])
+  @@index([sourceSystem, entityType])
+  @@index([externalKey])
+}
