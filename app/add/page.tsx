@@ -3,7 +3,7 @@ import { SectionHeader } from "@/components/section-header";
 import { SyncControls } from "@/components/sync-controls";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { formatDateTime } from "@/lib/utils";
-import { getAddInfoPageData } from "@/lib/repository";
+import { getAddInfoPageData, getMatchesNeedingBroadcastLinks } from "@/lib/repository";
 
 export const dynamic = "force-dynamic";
 
@@ -12,7 +12,11 @@ export default async function AddPage({
 }: {
   searchParams?: { club?: string };
 }) {
-  const data = await getAddInfoPageData();
+  const [data, broadcastData] = await Promise.all([
+    getAddInfoPageData(),
+    getMatchesNeedingBroadcastLinks()
+  ]);
+
   const clubs = data.clubs as Array<{
     id: string;
     name: string;
@@ -22,6 +26,17 @@ export default async function AddPage({
   const tags = data.tags as Array<{
     id: string;
     labelRu: string;
+  }>;
+  const matches = broadcastData.matchesRequiringReview as Array<{
+    id: string;
+    homeTeam: string;
+    awayTeam: string;
+    kickoffAt: Date;
+    league: string;
+    status: string;
+    currentUrl: string | null;
+    fnlMatchUrl: string | null;
+    broadcastMatchMode: string;
   }>;
 
   return (
@@ -43,6 +58,14 @@ export default async function AddPage({
             id: tag.id,
             labelRu: tag.labelRu
           }))}
+          matches={matches.map((match) => ({
+            id: match.id,
+            homeTeam: match.homeTeam,
+            awayTeam: match.awayTeam,
+            kickoffAt: match.kickoffAt,
+            league: match.league,
+            hasLink: !!match.currentUrl
+          }))}
           preselectedClubId={searchParams?.club}
         />
 
@@ -62,6 +85,7 @@ export default async function AddPage({
             <p>После загрузки файл автоматически классифицируется как камерплан, фото, согласование или прочий материал.</p>
             <p>Если тип определён неверно, его можно исправить вручную прямо на странице клуба.</p>
             <p>После загрузки файла создаётся черновой стадионный remark, который затем можно подтвердить вручную.</p>
+            <p>Для ссылок на трансляции: выберите матч, вставьте URL и нажмите "Добавить ссылку". Ссылка будет закреплена, чтобы автоматика её не перезаписала.</p>
           </CardContent>
         </Card>
       </section>

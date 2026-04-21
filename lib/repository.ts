@@ -978,6 +978,65 @@ export async function getAddInfoPageData() {
   };
 }
 
+export async function getMatchesNeedingBroadcastLinks(seasonSlug?: string) {
+  const season = await getActiveSeason(seasonSlug);
+
+  if (!season) {
+    return {
+      season: null,
+      matchesWithoutLinks: [],
+      matchesRequiringReview: []
+    };
+  }
+
+  const matches = await prisma.match.findMany({
+    where: {
+      seasonId: season.id,
+      status: { in: ["upcoming", "live"] }
+    },
+    orderBy: { kickoffAt: "asc" },
+    include: {
+      league: true,
+      homeClub: true,
+      awayClub: true
+    }
+  });
+
+  const matchesWithoutLinks = matches
+    .filter((m) => !m.broadcastUrl)
+    .map((m) => ({
+      id: m.id,
+      homeTeam: m.homeClub.name,
+      awayTeam: m.awayClub.name,
+      kickoffAt: m.kickoffAt,
+      league: m.league.name,
+      status: m.status,
+      currentUrl: null,
+      fnlMatchUrl: m.fnlMatchUrl,
+      broadcastMatchMode: "none"
+    }));
+
+  const matchesRequiringReview = matches
+    .filter((m) => m.broadcastMatchMode === "requires_review")
+    .map((m) => ({
+      id: m.id,
+      homeTeam: m.homeClub.name,
+      awayTeam: m.awayClub.name,
+      kickoffAt: m.kickoffAt,
+      league: m.league.name,
+      status: m.status,
+      currentUrl: m.broadcastUrl,
+      fnlMatchUrl: m.fnlMatchUrl,
+      broadcastMatchMode: "requires_review"
+    }));
+
+  return {
+    season,
+    matchesWithoutLinks,
+    matchesRequiringReview: [...matchesRequiringReview, ...matchesWithoutLinks]
+  };
+}
+
 export async function getSyncJobsSummary() {
   return prisma.dataSyncJob.findMany({
     orderBy: { createdAt: "desc" },

@@ -19,16 +19,27 @@ type TagOption = {
   labelRu: string;
 };
 
+type MatchOption = {
+  id: string;
+  homeTeam: string;
+  awayTeam: string;
+  kickoffAt: Date;
+  league: string;
+  hasLink: boolean;
+};
+
 export function AddInformationTabs({
   clubs,
   tags,
-  preselectedClubId
+  preselectedClubId,
+  matches
 }: {
   clubs: ClubOption[];
   tags: TagOption[];
   preselectedClubId?: string;
+  matches?: MatchOption[];
 }) {
-  const [activeTab, setActiveTab] = useState<"issue" | "file">("issue");
+  const [activeTab, setActiveTab] = useState<"issue" | "file" | "broadcast">("issue");
   const [message, setMessage] = useState("Форма готова к работе.");
   const [isPending, startTransition] = useTransition();
 
@@ -37,12 +48,13 @@ export function AddInformationTabs({
       <div className="flex flex-wrap gap-2">
         {[
           { key: "issue", label: "Добавить проблему трансляции" },
-          { key: "file", label: "Добавить стадионный файл" }
+          { key: "file", label: "Добавить стадионный файл" },
+          { key: "broadcast", label: "Добавить ссылку на трансляцию" }
         ].map((tab) => (
           <button
             key={tab.key}
             type="button"
-            onClick={() => setActiveTab(tab.key as "issue" | "file")}
+            onClick={() => setActiveTab(tab.key as "issue" | "file" | "broadcast")}
             className={cn(
               "rounded-full border px-3 py-2 text-sm transition",
               activeTab === tab.key
@@ -55,7 +67,77 @@ export function AddInformationTabs({
         ))}
       </div>
 
-      {activeTab === "issue" ? (
+      {activeTab === "broadcast" ? (
+        <Card>
+          <CardHeader>
+            <CardTitle>Добавить ссылку на трансляцию</CardTitle>
+            <CardDescription>Выберите матч и вставьте ссылку на трансляцию. Ссылка будет закреплена, чтобы автоматика её не перезаписала.</CardDescription>
+          </CardHeader>
+          <CardContent>
+            {!matches || matches.length === 0 ? (
+              <div className="rounded-2xl border border-dashed border-border/70 bg-secondary/20 p-8 text-center text-sm text-muted-foreground">
+                Нет матчей, требующих добавления ссылок на трансляции.
+              </div>
+            ) : (
+              <form
+                className="grid gap-4"
+                onSubmit={(event) => {
+                  event.preventDefault();
+                  const data = new FormData(event.currentTarget);
+
+                  startTransition(async () => {
+                    const matchId = data.get("matchId") as string;
+                    const broadcastUrl = data.get("broadcastUrl") as string;
+
+                    const response = await fetch(`/api/matches/${matchId}/broadcast`, {
+                      method: "PATCH",
+                      headers: {
+                        "Content-Type": "application/json"
+                      },
+                      body: JSON.stringify({
+                        action: "replace",
+                        broadcastUrl,
+                        lock: true
+                      })
+                    });
+
+                    const payload = (await response.json()) as { message: string };
+                    setMessage(payload.message);
+                    if (response.ok) {
+                      event.currentTarget.reset();
+                    }
+                  });
+                }}
+              >
+                <SelectField
+                  label="Матч"
+                  name="matchId"
+                  required
+                  options={matches.map((match) => ({
+                    value: match.id,
+                    label: `${match.homeTeam} - ${match.awayTeam} · ${match.league} · ${new Date(match.kickoffAt).toLocaleDateString("ru-RU")}`
+                  }))}
+                />
+                <div className="grid gap-2">
+                  <label className="text-sm font-medium text-foreground">Ссылка на трансляцию</label>
+                  <Input
+                    name="broadcastUrl"
+                    type="url"
+                    placeholder="https://vksport.vkvideo.ru/video... или другой URL"
+                    required
+                  />
+                </div>
+                <div className="flex items-center justify-between gap-4">
+                  <p className="text-sm text-muted-foreground">{message}</p>
+                  <Button type="submit" disabled={isPending}>
+                    {isPending ? "Сохраняем..." : "Добавить ссылку"}
+                  </Button>
+                </div>
+              </form>
+            )}
+          </CardContent>
+        </Card>
+      ) : activeTab === "issue" ? (
         <Card>
           <CardHeader>
             <CardTitle>Добавить проблему трансляции</CardTitle>
@@ -199,7 +281,7 @@ function SelectField({
   label: string;
   name: string;
   options: Array<{ value: string; label: string }>;
-  defaultValue: string;
+  defaultValue?: string;
   required?: boolean;
 }) {
   return (
@@ -207,7 +289,7 @@ function SelectField({
       <label className="text-sm font-medium text-foreground">{label}</label>
       <select
         name={name}
-        defaultValue={defaultValue}
+        defaultValue={defaultValue ?? ""}
         required={required}
         className="flex h-10 w-full rounded-xl border border-input bg-secondary px-3 py-2 text-sm text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30"
       >
