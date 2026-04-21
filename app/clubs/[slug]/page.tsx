@@ -120,6 +120,17 @@ export default async function ClubPage({
       history: Array<{ id: string; actorName: string; actionType: string; createdAt: Date; comment: string | null }>;
     }>;
     contacts: { name: string; phone: string } | null;
+    stadiumRegistry: {
+      stadium_name: string;
+      stadium_emails: string[];
+      address: string | null;
+      category: string | null;
+      capacity: string | null;
+      allowed_capacity: string | null;
+      turf_type: string | null;
+      cert_number: string | null;
+      cert_valid_to: string | null;
+    } | null;
     recurringProblems: Array<{ key: string; count: number; summary: string }>;
     nextMatch: {
       id: string;
@@ -209,22 +220,37 @@ export default async function ClubPage({
         <SummaryCard label="Фото стадиона" value={club.stats.hasGallery ? "Есть" : "Нет"} subtle />
       </section>
 
-      {club.contacts && (
+      {(club.contacts || club.stadiumRegistry) && (
         <Card className="border-primary/20 bg-primary/5">
           <CardHeader className="pb-2">
-            <CardTitle className="text-lg">Контакты пресс-атташе</CardTitle>
+            <CardTitle className="text-lg">Контакты</CardTitle>
           </CardHeader>
-          <CardContent>
-            <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-8">
+          <CardContent className="space-y-4">
+            {club.contacts && (
               <div>
-                <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground">Имя</p>
-                <p className="text-base font-semibold">{club.contacts.name}</p>
+                <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground mb-2">Пресс-атташе</p>
+                <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-8">
+                  <div>
+                    <p className="text-xs text-muted-foreground">Имя</p>
+                    <p className="text-base font-semibold">{club.contacts.name}</p>
+                  </div>
+                  <div>
+                    <p className="text-xs text-muted-foreground">Телефон / Контакт</p>
+                    <p className="text-base font-semibold">{club.contacts.phone}</p>
+                  </div>
+                </div>
               </div>
+            )}
+            {club.stadiumRegistry && club.stadiumRegistry.stadium_emails.length > 0 && (
               <div>
-                <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground">Телефон / Контакт</p>
-                <p className="text-base font-semibold">{club.contacts.phone}</p>
+                <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground mb-2">Стадион — {club.stadiumRegistry.stadium_name}</p>
+                <div className="flex flex-wrap gap-4">
+                  {club.stadiumRegistry.stadium_emails.map((email) => (
+                    <a key={email} href={`mailto:${email}`} className="text-base font-semibold text-primary hover:underline">{email}</a>
+                  ))}
+                </div>
               </div>
-            </div>
+            )}
           </CardContent>
         </Card>
       )}
@@ -431,17 +457,25 @@ export default async function ClubPage({
         <Card>
           <CardHeader>
             <CardTitle>Паспорт стадиона</CardTitle>
-            <CardDescription>Текущая стадионная карточка встроена в нижнюю зону страницы клуба.</CardDescription>
+            <CardDescription>Данные из реестра стадионов ФНЛ.</CardDescription>
           </CardHeader>
           <CardContent className="grid gap-4 md:grid-cols-2">
-            <Info label="Стадион" value={club.stadium?.name ?? "Не указан"} />
-            <Info label="Город" value={club.stadium?.city ?? club.city ?? "Не указан"} />
-            <Info label="Вместимость" value={formatNumber(club.stadium?.capacity)} />
-            <Info label="Покрытие" value={club.stadium?.surfaceType ?? "Не указано"} />
-            <Info label="Категория" value={club.stadium?.category ?? "Не указана"} />
-            <Info label="Сертификат" value={club.stadium?.certificateNumber ?? "Не указан"} />
-            <Info label="Действует до" value={formatDate(club.stadium?.certificateValidTo)} />
-            <Info label="Адрес" value={club.stadium?.address ?? "Не указан"} className="md:col-span-2" />
+            {club.stadiumRegistry ? (
+              <>
+                <Info label="Стадион" value={club.stadiumRegistry.stadium_name} className="md:col-span-2" />
+                <Info label="Адрес" value={club.stadiumRegistry.address ?? "Не указан"} className="md:col-span-2" />
+                <Info label="Категория / Разряд" value={club.stadiumRegistry.category ?? "Не указана"} />
+                <Info label="Тип газона" value={club.stadiumRegistry.turf_type ?? "Не указан"} />
+                <Info label="Вместимость" value={club.stadiumRegistry.capacity ?? "Не указана"} />
+                <Info label="Допустимая вместимость" value={club.stadiumRegistry.allowed_capacity ?? "Не указана"} />
+                <Info label="Номер сертификата" value={club.stadiumRegistry.cert_number ?? "Не указан"} />
+                <Info label="Срок действия сертификата" value={club.stadiumRegistry.cert_valid_to ?? "Не указан"} />
+              </>
+            ) : (
+              <div className="md:col-span-2 rounded-2xl border border-dashed border-border/70 bg-secondary/20 p-5 text-sm text-muted-foreground">
+                Данные по стадиону в реестре ФНЛ не найдены.
+              </div>
+            )}
           </CardContent>
         </Card>
       </section>

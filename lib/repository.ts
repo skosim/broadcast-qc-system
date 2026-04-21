@@ -686,12 +686,32 @@ export async function getClubPageData(slug: string, options?: {
     // Ignore if file doesn't exist yet
   }
 
+  // Load stadium registry data
+  let stadiumRegistry: {
+    stadium_name: string;
+    stadium_emails: string[];
+    address: string | null;
+    category: string | null;
+    capacity: string | null;
+    allowed_capacity: string | null;
+    turf_type: string | null;
+    cert_number: string | null;
+    cert_valid_to: string | null;
+  } | null = null;
+  try {
+    const stadiumData = require("./stadium-data.json");
+    stadiumRegistry = stadiumData[club.name] || stadiumData[club.shortName || ""] || null;
+  } catch (e) {
+    // Ignore if file doesn't exist yet
+  }
+
   return {
     season,
     seasons,
     club: {
       ...club,
       contacts,
+      stadiumRegistry,
       stats: {
         totalIssues: issues.length,
         recentIssues: issues.filter((issue) => issue.matchId && lastThreeIds.has(issue.matchId)).length,
