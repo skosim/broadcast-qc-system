@@ -9,22 +9,35 @@
     "category": "2",
     "capacity": "20074",
     "allowed_capacity": "14935*",
-    "turf_type": "натуральный с подогревом ()",
+    "turf_type": "натуральный с подогревом",
     "cert_number": "СтRU.К276А01324-2",
     "cert_valid_to": "30.09.2026"
   },
-  "Волга": null,
+  "Волга": {
+    "stadium_name": "«Труд» им. Л.И. Яшина",
+    "stadium_emails": [
+      "Trud.cs@mail.ru",
+      "ogauuss@yandex.ru"
+    ],
+    "address": "г. Ульяновск, ул. Андрея Блаженного, зд. 23",
+    "category": "2",
+    "capacity": "7972",
+    "allowed_capacity": "7972",
+    "turf_type": "натуральный с подогревом",
+    "cert_number": "СтRU.К276А01289",
+    "cert_valid_to": "15.07.2026"
+  },
   "Енисей": {
-    "stadium_name": "Крытый футбольный манеж Футбол-Арена «Енисей",
+    "stadium_name": "Крытый футбольный манеж Футбол-Арена «Енисей»",
     "stadium_emails": [
       "29-22-999@mail.ru",
       "priem@dfc-enisey.ru"
     ],
-    "address": "г. Красноярск,  ул. Новгородская, 5, стр. 7",
+    "address": "г. Красноярск, ул. Новгородская, 5, стр. 7",
     "category": "2",
     "capacity": "3000",
     "allowed_capacity": "3000",
-    "turf_type": "искусственный с подогревом (манеж) ()",
+    "turf_type": "искусственный с подогревом (манеж)",
     "cert_number": "СтRU.К276А01322",
     "cert_valid_to": "30.09.2026"
   },
@@ -38,28 +51,28 @@
     "category": "2",
     "capacity": "6200",
     "allowed_capacity": "6200",
-    "turf_type": "искусственный с подогревом ()",
+    "turf_type": "искусственный с подогревом",
     "cert_number": "СтRU.К276А01318",
     "cert_valid_to": "26.09.2026"
   },
   "Нефтехимик": {
-    "stadium_name": "Стадион спорткомплекса «Нефтехимик",
+    "stadium_name": "Стадион спорткомплекса «Нефтехимик»",
     "stadium_emails": [
       "neftechimik1991@mail.ru",
       "Natali373.nik@mail.ru"
     ],
-    "address": "г. Нижнекамск ул.30 лет Победы 8 а",
+    "address": "г. Нижнекамск, ул. 30 лет Победы, 8а",
     "category": "2",
     "capacity": "3046",
     "allowed_capacity": "3046",
-    "turf_type": "искусственный с подогревом ()",
+    "turf_type": "искусственный с подогревом",
     "cert_number": "СтRU.К276А01302",
     "cert_valid_to": "26.07.2026"
   },
   "Родина": null,
   "Ротор": null,
   "СКА-Хабаровск": {
-    "stadium_name": "Футбольный стадион",
+    "stadium_name": "Футбольный стадион им. В.И. Ленина",
     "stadium_emails": [
       "i.gerasko@fcska.ru",
       "Fcska-khv@yandex.ru"
@@ -68,7 +81,7 @@
     "category": "2",
     "capacity": "14800",
     "allowed_capacity": "14800",
-    "turf_type": "искусственный c подогревом ()",
+    "turf_type": "искусственный с подогревом",
     "cert_number": "СтRU.К276А01394-3",
     "cert_valid_to": "08.07.2027"
   },
@@ -81,7 +94,7 @@
     "category": "2",
     "capacity": "15000",
     "allowed_capacity": "11359*",
-    "turf_type": "искусственный с подогревом ()",
+    "turf_type": "искусственный с подогревом",
     "cert_number": "СтRU.К276А01334",
     "cert_valid_to": "01.11.2026"
   },
@@ -94,7 +107,7 @@
     "category": "3 «А»",
     "capacity": "12170",
     "allowed_capacity": "4950*",
-    "turf_type": "искусственный с подогревом ()",
+    "turf_type": "искусственный с подогревом",
     "cert_number": "СтRU.К276А01271-2",
     "cert_valid_to": "20.06.2026"
   },
@@ -107,7 +120,7 @@
     "category": "4 «Б»",
     "capacity": "3000",
     "allowed_capacity": "3000",
-    "turf_type": "искусственный с подогревом ()",
+    "turf_type": "искусственный с подогревом",
     "cert_number": "СтRU.К276А01426",
     "cert_valid_to": "31.10.2027"
   },
@@ -121,7 +134,7 @@
     "category": "3 «А»",
     "capacity": "10044",
     "allowed_capacity": "10044",
-    "turf_type": "натуральный с подогревом ()",
+    "turf_type": "натуральный с подогревом",
     "cert_number": "СтRU.К276А01309-2",
     "cert_valid_to": "14.08.2026"
   },
@@ -135,7 +148,7 @@
     "category": "2",
     "capacity": "14474",
     "allowed_capacity": "4987",
-    "turf_type": "искусственный с подогревом ()",
+    "turf_type": "искусственный с подогревом",
     "cert_number": "СтRU.К276А01300-2",
     "cert_valid_to": "23.07.2026"
   },
@@ -150,7 +163,7 @@
     "category": "2",
     "capacity": "3021",
     "allowed_capacity": "3021",
-    "turf_type": "натуральный с подогревом ()",
+    "turf_type": "натуральный с подогревом",
     "cert_number": "СтRU.К276А01253-3",
     "cert_valid_to": "22.04.2026"
   },
@@ -159,11 +172,11 @@
     "stadium_emails": [
       "stadion174@mail.ru"
     ],
-    "address": "г. Челябинск,  ул. Коммуны, д. 98",
+    "address": "г. Челябинск, ул. Коммуны, д. 98",
     "category": "2",
     "capacity": "14337",
     "allowed_capacity": "7597*",
-    "turf_type": "искусственный с подогревом ()",
+    "turf_type": "искусственный с подогревом",
     "cert_number": "СтRU.К276А01342-2",
     "cert_valid_to": "31.10.2026"
   },
@@ -176,7 +189,7 @@
     "category": "2",
     "capacity": "12500",
     "allowed_capacity": "10000*",
-    "turf_type": "искусственный с подогревом ()",
+    "turf_type": "искусственный с подогревом",
     "cert_number": "СтRU.К276А01455",
     "cert_valid_to": "01.04.2028"
   },
@@ -190,12 +203,12 @@
     "category": "2",
     "capacity": "20878",
     "allowed_capacity": "4939*",
-    "turf_type": "натуральный с подогревом ()",
+    "turf_type": "натуральный с подогревом",
     "cert_number": "СтRU.К276А01343",
     "cert_valid_to": "01.11.2026"
   },
   "Велес": {
-    "stadium_name": "Стадион универсальный с искусственным покрытием для футбола и легкой атлетики",
+    "stadium_name": "Стадион универсальный с искусственным покрытием для футбола и лёгкой атлетики",
     "stadium_emails": [
       "director@gsavangard.ru",
       "chernyshev.anton@fc-veles.ru"
@@ -204,12 +217,12 @@
     "category": "3 «А»",
     "capacity": "5544",
     "allowed_capacity": "5544",
-    "turf_type": "искусственный с подогревом ()",
+    "turf_type": "искусственный с подогревом",
     "cert_number": "СтRU.К276А01308",
     "cert_valid_to": "02.08.2026"
   },
   "Волгарь": {
-    "stadium_name": "Малая Арена» стадиона «Центральный",
+    "stadium_name": "Малая Арена стадиона «Центральный»",
     "stadium_emails": [
       "cadora@mail.ru",
       "office@volgar-fc.ru"
@@ -218,7 +231,7 @@
     "category": "3 «А»",
     "capacity": "3500",
     "allowed_capacity": "3500",
-    "turf_type": "искусственный с подогревом ()",
+    "turf_type": "искусственный с подогревом",
     "cert_number": "СтRU.К276А01285",
     "cert_valid_to": "04.07.2026"
   },
@@ -233,7 +246,7 @@
     "category": "4 «А»",
     "capacity": "698",
     "allowed_capacity": "698",
-    "turf_type": "натуральный с подогревом ()",
+    "turf_type": "натуральный с подогревом",
     "cert_number": "СтRU.К276А01295-2",
     "cert_valid_to": "17.07.2026"
   },
@@ -247,12 +260,12 @@
     "category": "3 «А»",
     "capacity": "1534",
     "allowed_capacity": "1534",
-    "turf_type": "искусственный с подогревом ()",
+    "turf_type": "искусственный с подогревом",
     "cert_number": "СтRU.К276А01449",
     "cert_valid_to": "15.03.2028"
   },
   "Машук-КМВ": {
-    "stadium_name": "Поле спортивное открытое с покрытием из искусственной травы",
+    "stadium_name": "Поле спортивное открытое с покрытием из искусственной травы («Ессентуки Арена»)",
     "stadium_emails": [
       "fcmashuk@mail.ru",
       "Footboll.ess@yandex.ru"
@@ -261,7 +274,7 @@
     "category": "4 «А»",
     "capacity": "544",
     "allowed_capacity": "544",
-    "turf_type": "искусственный с подогревом ()",
+    "turf_type": "искусственный с подогревом",
     "cert_number": "СтRU.К276А01310-2",
     "cert_valid_to": "15.08.2026"
   },
@@ -276,7 +289,7 @@
     "category": "3 «А»",
     "capacity": "9565",
     "allowed_capacity": "9565",
-    "turf_type": "искусственный с подогревом ()",
+    "turf_type": "искусственный с подогревом",
     "cert_number": "СтRU.К276А01425-2",
     "cert_valid_to": "23.10.2027"
   },
@@ -290,7 +303,7 @@
     "category": "3 «А»",
     "capacity": "2898",
     "allowed_capacity": "2898",
-    "turf_type": "искусственный с подогревом ()",
+    "turf_type": "искусственный с подогревом",
     "cert_number": "СтRU.К276А01319-2",
     "cert_valid_to": "26.09.2026"
   },
@@ -304,11 +317,24 @@
     "category": "4 «А»",
     "capacity": "500",
     "allowed_capacity": "500",
-    "turf_type": "искусственный без подогрева ()",
+    "turf_type": "искусственный без подогрева",
     "cert_number": "СтRU.К276А01280-2",
     "cert_valid_to": "04.07.2026"
   },
-  "Амкар-Пермь": null,
+  "Амкар-Пермь": {
+    "stadium_name": "«Звезда» (доступ зрителей только на Западную трибуну и 11 сектор Северной трибуны)",
+    "stadium_emails": [
+      "aleks.knyazev.72@mail.ru",
+      "aakniazev@csp.permkrai.ru"
+    ],
+    "address": "г. Пермь, ул. Куйбышева, 95",
+    "category": "3 «А»",
+    "capacity": "17000",
+    "allowed_capacity": "4143*",
+    "turf_type": "искусственный с подогревом",
+    "cert_number": "СтRU.К276А01326",
+    "cert_valid_to": "30.09.2026"
+  },
   "Динамо-2 (Москва)": null,
   "Динамо-Брянск": {
     "stadium_name": "Динамо",
@@ -320,13 +346,13 @@
     "category": "3 «А»",
     "capacity": "9723",
     "allowed_capacity": "9723",
-    "turf_type": "натуральный с подогревом ()",
+    "turf_type": "натуральный с подогревом",
     "cert_number": "СтRU.К276А01278-2",
     "cert_valid_to": "04.07.2026"
   },
   "Динамо-Владивосток": null,
   "Динамо (Киров)": {
-    "stadium_name": "КОГАУ ДО «ВятСШОР",
+    "stadium_name": "КОГАУ ДО «ВятСШОР»",
     "stadium_emails": [
       "sport43@sport43.kirov.ru"
     ],
@@ -334,22 +360,35 @@
     "category": "3 «А»",
     "capacity": "1504",
     "allowed_capacity": "1504",
-    "turf_type": "искусственный без подогрева ()",
-    "cert_number": "СтRU.К276А01396-2",
+    "turf_type": "искусственный без подогрева",
+    "cert_number": "СтRU.К276А01394-3",
     "cert_valid_to": "08.07.2027"
   },
-  "Динамо Ставрополь": null,
+  "Динамо Ставрополь": {
+    "stadium_name": "«Динамо» г. Ставрополь (до 29.11.2026 г.) / «Машук-КМВ» г. Пятигорск (с 29.11.2026 г.)",
+    "stadium_emails": [
+      "mashuck.kmv@yandex.ru",
+      "fcmashuk@mail.ru"
+    ],
+    "address": "г. Пятигорск, ул. Дунаевского, 5",
+    "category": "4 «А»",
+    "capacity": "544",
+    "allowed_capacity": "544",
+    "turf_type": "искусственный с подогревом",
+    "cert_number": "СтRU.К276А01310-2",
+    "cert_valid_to": "15.08.2026"
+  },
   "Зенит-2": {
     "stadium_name": "Зенит",
     "stadium_emails": [
       "zenit-volgograd@mail.ru",
       "zalipaev84@mail.ru"
     ],
-    "address": "г. Волгоград,  ул. Таращанцев, 72",
+    "address": "г. Волгоград, ул. Таращанцев, 72",
     "category": "3 «А»",
     "capacity": "3470",
     "allowed_capacity": "3470",
-    "turf_type": "натуральный без подогрева ()",
+    "turf_type": "натуральный без подогрева",
     "cert_number": "СтRU.К276А01312",
     "cert_valid_to": "13.09.2026"
   },
@@ -359,11 +398,11 @@
       "admin@pfckuban.ru",
       "decc@inbox.ru"
     ],
-    "address": "г. Краснодар,  ул. Железнодорожная, д. 49",
+    "address": "г. Краснодар, ул. Железнодорожная, д. 49",
     "category": "3 «А»",
     "capacity": "31156",
     "allowed_capacity": "31156",
-    "turf_type": "натуральный с подогревом ()",
+    "turf_type": "натуральный с подогревом",
     "cert_number": "СтRU.К276А01358-2",
     "cert_valid_to": "15.03.2027"
   },
@@ -377,12 +416,12 @@
     "category": "3 «А»",
     "capacity": "13057",
     "allowed_capacity": "13057",
-    "turf_type": "искусственный c подогревом ()",
+    "turf_type": "искусственный с подогревом",
     "cert_number": "СтRU.К276А01311-2",
     "cert_valid_to": "13.09.2026"
   },
   "Ангушт": {
-    "stadium_name": "Республиканский спортивный комплекс - стадион им. Р. Аушева",
+    "stadium_name": "Республиканский спортивный комплекс — стадион им. Р. Аушева",
     "stadium_emails": [
       "Zina.i.gbu@mail.ru",
       "Den20041986@mail.ru"
@@ -391,12 +430,12 @@
     "category": "3 «Б»",
     "capacity": "3400",
     "allowed_capacity": "3400",
-    "turf_type": "натуральный без подогрева ()",
+    "turf_type": "натуральный без подогрева",
     "cert_number": "СтRU.К276А01461",
     "cert_valid_to": "09.04.2028"
   },
   "Астрахань": {
-    "stadium_name": "Малая Арена» стадиона «Центральный",
+    "stadium_name": "Малая Арена стадиона «Центральный»",
     "stadium_emails": [
       "cadora@mail.ru",
       "office@volgar-fc.ru"
@@ -405,22 +444,35 @@
     "category": "3 «А»",
     "capacity": "3500",
     "allowed_capacity": "3500",
-    "turf_type": "искусственный с подогревом ()",
+    "turf_type": "искусственный с подогревом",
     "cert_number": "СтRU.К276А01285",
     "cert_valid_to": "04.07.2026"
   },
-  "Динамо-2 (Махачкала)": null,
+  "Динамо-2 (Махачкала)": {
+    "stadium_name": "Футбольное поле с искусственным покрытием стадиона «Труд» (без допуска зрителей на Восточную трибуну)",
+    "stadium_emails": [
+      "Shihab33@mail.ru",
+      "trud.stadium@mail.ru"
+    ],
+    "address": "г. Махачкала, ул. Ярагского, 98",
+    "category": "3 «Б»",
+    "capacity": "5600",
+    "allowed_capacity": "2800*",
+    "turf_type": "искусственный с подогревом",
+    "cert_number": "СтRU.К276А01397",
+    "cert_valid_to": "15.07.2027"
+  },
   "Дружба": null,
   "Заря": {
     "stadium_name": "Спортивный комплекс крытого футбольного манежа",
     "stadium_emails": [
       "AKorenev@admnsk.ru"
     ],
-    "address": "г. Новосибирск, ул. Спортивная, д. 2,",
+    "address": "г. Новосибирск, ул. Спортивная, д. 2",
     "category": "2",
     "capacity": "3548",
     "allowed_capacity": "3548",
-    "turf_type": "искусственный с подогревом манеж ()",
+    "turf_type": "искусственный с подогревом (манеж)",
     "cert_number": "СтRU.К276А01442",
     "cert_valid_to": "01.03.2028"
   },
@@ -431,11 +483,11 @@
       "sk.nart@mail.ru",
       "artur_915@mail.ru"
     ],
-    "address": "г. Черкесск, ПКиО «Зеленый остров»",
+    "address": "г. Черкесск, ПКиО «Зелёный остров»",
     "category": "3 «А»",
     "capacity": "9018",
     "allowed_capacity": "9018",
-    "turf_type": "натуральный без подогрева ()",
+    "turf_type": "натуральный без подогрева",
     "cert_number": "СтRU.К276А01395",
     "cert_valid_to": "08.07.2027"
   },
@@ -445,11 +497,11 @@
     "stadium_emails": [
       "gaidarfc@mail.ru"
     ],
-    "address": "г. Хасавюрт ул. Грозненская 73",
+    "address": "г. Хасавюрт, ул. Грозненская, 73",
     "category": "4 «Б»",
     "capacity": "740",
     "allowed_capacity": "740",
-    "turf_type": "искусственный без подогрева ()",
+    "turf_type": "искусственный без подогрева",
     "cert_number": "СтRU.К276А01298",
     "cert_valid_to": "19.07.2026"
   },
@@ -463,7 +515,7 @@
     "category": "2",
     "capacity": "3021",
     "allowed_capacity": "3021",
-    "turf_type": "натуральный с подогревом ()",
+    "turf_type": "натуральный с подогревом",
     "cert_number": "СтRU.К276А01253-3",
     "cert_valid_to": "22.04.2026"
   },
@@ -473,25 +525,25 @@
       "info@fc-rostov.ru",
       "law@fc-rostov.ru"
     ],
-    "address": "г. Ростов-на-Дону, пр. Шолохова, д. 31 Е",
+    "address": "г. Ростов-на-Дону, пр. Шолохова, д. 31Е",
     "category": "3 «А»",
     "capacity": "14321",
     "allowed_capacity": "5118*",
-    "turf_type": "натуральный с подогревом ()",
+    "turf_type": "натуральный с подогревом",
     "cert_number": "СтRU.К276А01353",
     "cert_valid_to": "01.11.2026"
   },
   "Рубин Ялта": null,
   "Севастополь": {
-    "stadium_name": "СК «Севастополь",
+    "stadium_name": "СК «Севастополь»",
     "stadium_emails": [
       "sevcsp@yandex.ru"
     ],
-    "address": "г. Севастополь, ул. Брестская 21",
+    "address": "г. Севастополь, ул. Брестская, 21",
     "category": "3 «А»",
     "capacity": "5588",
     "allowed_capacity": "5588",
-    "turf_type": "натуральный без подогрева ()",
+    "turf_type": "натуральный без подогрева",
     "cert_number": "СтRU.К276А01379",
     "cert_valid_to": "16.05.2027"
   },
@@ -504,7 +556,7 @@
     "category": "3 «Б»",
     "capacity": "13800",
     "allowed_capacity": "6800*",
-    "turf_type": "натуральный без подогрева ()",
+    "turf_type": "натуральный без подогрева",
     "cert_number": "СтRU.К276А01428",
     "cert_valid_to": "31.10.2027"
   },
@@ -518,7 +570,7 @@
     "category": "2",
     "capacity": "3021",
     "allowed_capacity": "3021",
-    "turf_type": "натуральный с подогревом ()",
+    "turf_type": "натуральный с подогревом",
     "cert_number": "СтRU.К276А01253-3",
     "cert_valid_to": "22.04.2026"
   },
@@ -532,7 +584,7 @@
     "category": "4 «А»",
     "capacity": "4142",
     "allowed_capacity": "4142",
-    "turf_type": "искусственный без подогрева ()",
+    "turf_type": "искусственный без подогрева",
     "cert_number": "СтRU.К276А01427",
     "cert_valid_to": "01.10.2027"
   },
@@ -545,7 +597,7 @@
     "category": "3 «А»",
     "capacity": "2480",
     "allowed_capacity": "2480",
-    "turf_type": "искусственный c подогревом ()",
+    "turf_type": "искусственный с подогревом",
     "cert_number": "СтRU.К276А01399",
     "cert_valid_to": "15.07.2027"
   },
@@ -558,22 +610,22 @@
     "category": "3 «А»",
     "capacity": "2490",
     "allowed_capacity": "2490",
-    "turf_type": "искусственный без подогрева ()",
+    "turf_type": "искусственный без подогрева",
     "cert_number": "СтRU.К276А01262-2",
     "cert_valid_to": "16.05.2026"
   },
   "Динамо-СПб": null,
   "Енисей-2": {
-    "stadium_name": "Крытый футбольный манеж Футбол-Арена «Енисей",
+    "stadium_name": "Крытый футбольный манеж Футбол-Арена «Енисей»",
     "stadium_emails": [
       "29-22-999@mail.ru",
       "priem@dfc-enisey.ru"
     ],
-    "address": "г. Красноярск,  ул. Новгородская, 5, стр. 7",
+    "address": "г. Красноярск, ул. Новгородская, 5, стр. 7",
     "category": "2",
     "capacity": "3000",
     "allowed_capacity": "3000",
-    "turf_type": "искусственный с подогревом (манеж) ()",
+    "turf_type": "искусственный с подогревом (манеж)",
     "cert_number": "СтRU.К276А01322",
     "cert_valid_to": "30.09.2026"
   },
@@ -586,7 +638,7 @@
     "category": "3 «А»",
     "capacity": "3000",
     "allowed_capacity": "3000",
-    "turf_type": "искусственный с подогревом (манеж) ()",
+    "turf_type": "искусственный с подогревом (манеж)",
     "cert_number": "СтRU.К276А01329-2",
     "cert_valid_to": "04.10.2026"
   },
@@ -596,11 +648,11 @@
       "kungurov.89@list.ru",
       "port_1776@mail.ru"
     ],
-    "address": "Иркутская область, г. Черемхово, ул. Ленина, д.28",
+    "address": "Иркутская область, г. Черемхово, ул. Ленина, д. 28",
     "category": "4 «Б»",
     "capacity": "2013",
     "allowed_capacity": "2013",
-    "turf_type": "искусственный без подогрева ()",
+    "turf_type": "искусственный без подогрева",
     "cert_number": "СтRU.К276А01413",
     "cert_valid_to": "08.09.2027"
   },
@@ -615,7 +667,7 @@
     "category": "3 «Б»",
     "capacity": "5780",
     "allowed_capacity": "5780",
-    "turf_type": "искусственный с подогревом ()",
+    "turf_type": "искусственный с подогревом",
     "cert_number": "СтRU.К276А01385",
     "cert_valid_to": "06.06.2027"
   },
@@ -625,25 +677,24 @@
       "igor12340@yandex.ru",
       "vluki_fc60@mail.ru"
     ],
-    "address": "г. Великие Луки, ул. Малышева, д.11а",
+    "address": "г. Великие Луки, ул. Малышева, д. 11а",
     "category": "4 «А»",
     "capacity": "3500",
     "allowed_capacity": "2197*",
-    "turf_type": "искусственный без подогрева ()",
+    "turf_type": "искусственный без подогрева",
     "cert_number": "СтRU.К276А01383-2",
     "cert_valid_to": "26.05.2026"
   },
   "Муром": {
-    "stadium_name": "Футбольное поле с искусственным покрытием» (Стадион имени Виктора Лосева)",
+    "stadium_name": "Футбольное поле с искусственным покрытием (Стадион имени Виктора Лосева)",
     "stadium_emails": [
-      "s09234@yandex.ru",
-      "dushoka@yandex.ru"
+      "s09234@yandex.ru"
     ],
     "address": "г. Муром, бульвар Тихомирова, д. 17",
     "category": "3 «А»",
     "capacity": "2080",
     "allowed_capacity": "2080",
-    "turf_type": "искусственный без подогрева ()",
+    "turf_type": "искусственный без подогрева",
     "cert_number": "СтRU.К276А01411-2",
     "cert_valid_to": "19.08.2027"
   },
@@ -653,12 +704,12 @@
     "stadium_emails": [
       "kdush1@yandex.ru"
     ],
-    "address": "г. Тверь, ул. Вокзальная, д.7",
+    "address": "г. Тверь, ул. Вокзальная, д. 7",
     "category": "4 «Б»",
     "capacity": "586",
     "allowed_capacity": "586",
-    "turf_type": "искусственный без подогрева ()",
-    "cert_number": "СтRU.К276А01266\nприостановлен",
+    "turf_type": "искусственный без подогрева",
+    "cert_number": "СтRU.К276А01266 (приостановлен)",
     "cert_valid_to": "14.06.2026"
   },
   "Торпедо-Владимир": null,
@@ -672,7 +723,7 @@
     "category": "4 «А»",
     "capacity": "585",
     "allowed_capacity": "585",
-    "turf_type": "искусственный с подогревом ()",
+    "turf_type": "искусственный с подогревом",
     "cert_number": "СтRU.К276А01327-4",
     "cert_valid_to": "04.10.2026"
   },
@@ -686,7 +737,7 @@
     "category": "4 «А»",
     "capacity": "1500",
     "allowed_capacity": "500*",
-    "turf_type": "искусственный с подогревом ()",
+    "turf_type": "искусственный с подогревом",
     "cert_number": "СтRU.К276А01351",
     "cert_valid_to": "14.07.2026"
   },
@@ -700,21 +751,20 @@
     "category": "3 «А»",
     "capacity": "11076",
     "allowed_capacity": "2100*",
-    "turf_type": "натуральный с подогревом ()",
+    "turf_type": "натуральный с подогревом",
     "cert_number": "СтRU.К276А01435",
     "cert_valid_to": "15.10.2027"
   },
   "Арсенал-2": {
-    "stadium_name": "Арсенал",
+    "stadium_name": "Академия «Арсенал»",
     "stadium_emails": [
-      "zamdir@arsenaltula.ru",
-      "upr.sport@tularegion.org"
+      "zamdir@arsenaltula.ru"
     ],
     "address": "г. Тула, пр. Ленина, д. 87",
-    "category": "2",
+    "category": "4 «А»",
     "capacity": "20074",
     "allowed_capacity": "14935*",
-    "turf_type": "натуральный с подогревом ()",
+    "turf_type": "искусственный с подогревом",
     "cert_number": "СтRU.К276А01324-2",
     "cert_valid_to": "30.09.2026"
   },
@@ -728,20 +778,20 @@
     "category": "4 «Б»",
     "capacity": "2160",
     "allowed_capacity": "2160",
-    "turf_type": "искусственный без подогрева ()",
+    "turf_type": "искусственный без подогрева",
     "cert_number": "СтRU.К276А01371",
     "cert_valid_to": "23.04.2027"
   },
   "Зенит (Пенза)": {
-    "stadium_name": "СК «Зенит",
+    "stadium_name": "СК «Зенит»",
     "stadium_emails": [
       "info@zenit-penza.ru"
     ],
-    "address": "г. Пенза, ул. Германа Титова,  д.3 А",
+    "address": "г. Пенза, ул. Германа Титова, д. 3А",
     "category": "4 «Б»",
     "capacity": "880",
     "allowed_capacity": "880",
-    "turf_type": "натуральный без подогрева ()",
+    "turf_type": "натуральный без подогрева",
     "cert_number": "СтRU.К276А01275",
     "cert_valid_to": "30.06.2026"
   },
@@ -755,7 +805,7 @@
     "category": "4 «Б»",
     "capacity": "3978",
     "allowed_capacity": "3978",
-    "turf_type": "искусственный без подогрева ()",
+    "turf_type": "искусственный без подогрева",
     "cert_number": "СтRU.К276А01270",
     "cert_valid_to": "20.06.2026"
   },
@@ -769,7 +819,7 @@
     "category": "3 «А»",
     "capacity": "12950",
     "allowed_capacity": "9000*",
-    "turf_type": "искусственный без подогрева ()",
+    "turf_type": "искусственный без подогрева",
     "cert_number": "СтRU.К276А01391",
     "cert_valid_to": "01.07.2027"
   },
@@ -785,7 +835,7 @@
     "category": "3 «А»",
     "capacity": "4818",
     "allowed_capacity": "4818",
-    "turf_type": "искусственный без подогрева ()",
+    "turf_type": "искусственный без подогрева",
     "cert_number": "СтRU.К276А01421-2",
     "cert_valid_to": "06.10.2027"
   },
@@ -799,12 +849,12 @@
     "category": "3 «А»",
     "capacity": "14685",
     "allowed_capacity": "14685",
-    "turf_type": "натуральный с подогревом ()",
+    "turf_type": "натуральный с подогревом",
     "cert_number": "СтRU.К276А01268-2",
     "cert_valid_to": "20.06.2026"
   },
   "СКА-Хабаровск-2": {
-    "stadium_name": "Футбольный стадион",
+    "stadium_name": "Футбольный стадион им. В.И. Ленина",
     "stadium_emails": [
       "i.gerasko@fcska.ru",
       "Fcska-khv@yandex.ru"
@@ -813,7 +863,7 @@
     "category": "2",
     "capacity": "14800",
     "allowed_capacity": "14800",
-    "turf_type": "искусственный c подогревом ()",
+    "turf_type": "искусственный с подогревом",
     "cert_number": "СтRU.К276А01394-3",
     "cert_valid_to": "08.07.2027"
   },
@@ -826,7 +876,7 @@
     "category": "3 «А»",
     "capacity": "4990",
     "allowed_capacity": "4990",
-    "turf_type": "натуральный с подогревом ()",
+    "turf_type": "натуральный с подогревом",
     "cert_number": "СтRU.К276А01299",
     "cert_valid_to": "23.07.2026"
   },
@@ -837,11 +887,11 @@
       "fk_shumbrat13@mail.ru",
       "start@e-mordovia.ru"
     ],
-    "address": "г. Саранск, проспект 70 лет Октября, д. 67, кв. 78",
+    "address": "г. Саранск, проспект 70 лет Октября, д. 67",
     "category": "4 «А»",
     "capacity": "11613",
     "allowed_capacity": "3200*",
-    "turf_type": "искусственный с подогревом ()",
+    "turf_type": "искусственный с подогревом",
     "cert_number": "СтRU.К276А01452",
     "cert_valid_to": "15.04.2028"
   },
@@ -854,7 +904,7 @@
     "category": "3 «А»",
     "capacity": "3010",
     "allowed_capacity": "3010",
-    "turf_type": "искусственный с подогревом ()",
+    "turf_type": "искусственный с подогревом",
     "cert_number": "СтRU.К276А01416",
     "cert_valid_to": "12.09.2027"
   },
@@ -867,12 +917,12 @@
     "category": "4 «А»",
     "capacity": "15000",
     "allowed_capacity": "6017*",
-    "turf_type": "натуральный без подогрева ()",
-    "cert_number": "СтRU.К276А01287-2\nприостановлен",
+    "turf_type": "натуральный без подогрева",
+    "cert_number": "СтRU.К276А01287-2 (приостановлен)",
     "cert_valid_to": "09.07.2026"
   },
   "Ижевск": {
-    "stadium_name": "Спортивно-оздоровительный комплекс «Купол",
+    "stadium_name": "Спортивно-оздоровительный комплекс «Купол»",
     "stadium_emails": [
       "Fc.zenit-izhevsk@yandex.ru",
       "sazonov0357@yandex.ru"
@@ -881,21 +931,21 @@
     "category": "3 «Б»",
     "capacity": "3100",
     "allowed_capacity": "3100",
-    "turf_type": "натуральный без подогрева ()",
+    "turf_type": "натуральный без подогрева",
     "cert_number": "СтRU.К276А01386",
     "cert_valid_to": "06.06.2027"
   },
   "КДВ": null,
   "Крылья Советов-2": {
-    "stadium_name": "Спортивный комплекс «Металлург",
+    "stadium_name": "Спортивный комплекс «Металлург»",
     "stadium_emails": [
       "i.grishin@ks-samara.com"
     ],
-    "address": "г. Самара, ул. Строителей, д.1",
+    "address": "г. Самара, ул. Строителей, д. 1",
     "category": "3 «А»",
     "capacity": "30251",
-    "allowed_capacity": "9 414*",
-    "turf_type": "искусственный с подогревом ()",
+    "allowed_capacity": "9414*",
+    "turf_type": "искусственный с подогревом",
     "cert_number": "СтRU.К276А01337-3",
     "cert_valid_to": "31.10.2026"
   },
@@ -905,11 +955,11 @@
       "dsh.2@mail.ru",
       "tanya-1126@mail.ru"
     ],
-    "address": "Оренбургская обл.,  г. Новотроицк, ул. Советская, д. 33 «а»",
+    "address": "Оренбургская обл., г. Новотроицк, ул. Советская, д. 33а",
     "category": "3 «А»",
     "capacity": "6000",
     "allowed_capacity": "6000",
-    "turf_type": "натуральный с подогревом ()",
+    "turf_type": "натуральный с подогревом",
     "cert_number": "СтRU.К276А01305-2",
     "cert_valid_to": "30.07.2026"
   },
@@ -919,24 +969,24 @@
       "a.evgrafov@fcorenburg.ru",
       "evgrafov62@inbox.ru"
     ],
-    "address": "г. Оренбург, п. Ростоши,  ул. Цветной бульвар, д.31",
+    "address": "г. Оренбург, п. Ростоши, ул. Цветной бульвар, д. 31",
     "category": "1 «СИБ»",
     "capacity": "10046",
     "allowed_capacity": "10046",
-    "turf_type": "искусственный с подогревом ()",
+    "turf_type": "искусственный с подогревом",
     "cert_number": "СтRU.К276А01414",
     "cert_valid_to": "08.09.2027"
   },
   "Победа Нижний Новгород": {
-    "stadium_name": "Стадион «Совкомбанк Арена",
+    "stadium_name": "Стадион «Совкомбанк Арена»",
     "stadium_emails": [
       "doc@dsmnnov.ru"
     ],
-    "address": "603086, г. Нижний Новгород, ул. Бетанкура дом 1 А, стр. 7",
+    "address": "г. Нижний Новгород, ул. Бетанкура, д. 1А, стр. 7",
     "category": "В «СИБ»",
     "capacity": "44242",
     "allowed_capacity": "44242",
-    "turf_type": "натуральный с подогревом ()",
+    "turf_type": "натуральный с подогревом",
     "cert_number": "СтRU.К276А01269-3",
     "cert_valid_to": "20.06.2026"
   },
@@ -950,7 +1000,7 @@
     "category": "4 «А»",
     "capacity": "608",
     "allowed_capacity": "608",
-    "turf_type": "искусственный с подогревом ()",
+    "turf_type": "искусственный с подогревом",
     "cert_number": "СтRU.К276А01303",
     "cert_valid_to": "26.07.2026"
   },
@@ -960,40 +1010,38 @@
       "resh98@yandex.ru",
       "aip@fc-ural.ru"
     ],
-    "address": "Свердловская обл. Сысертский р-н, 2 км. западнее г. Сысерть",
+    "address": "Свердловская обл., Сысертский р-н, 2 км западнее г. Сысерть",
     "category": "4 «Б»",
     "capacity": "500",
     "allowed_capacity": "500",
-    "turf_type": "искусственный с подогревом ()",
+    "turf_type": "искусственный с подогревом",
     "cert_number": "СтRU.К276А01403",
     "cert_valid_to": "24.07.2027"
   },
   "Химик": {
-    "stadium_name": "Стадион спорткомплекса «Нефтехимик",
+    "stadium_name": "Химик",
     "stadium_emails": [
-      "neftechimik1991@mail.ru",
-      "Natali373.nik@mail.ru"
+      "himik.dzerz@mail.ru"
     ],
-    "address": "г. Нижнекамск ул.30 лет Победы 8 а",
-    "category": "2",
-    "capacity": "3046",
-    "allowed_capacity": "3046",
-    "turf_type": "искусственный с подогревом ()",
-    "cert_number": "СтRU.К276А01302",
-    "cert_valid_to": "26.07.2026"
+    "address": "г. Дзержинск",
+    "category": "4 «А»",
+    "capacity": null,
+    "allowed_capacity": null,
+    "turf_type": "искусственный без подогрева",
+    "cert_number": null,
+    "cert_valid_to": null
   },
   "Челябинск-2": {
-    "stadium_name": "Труд",
+    "stadium_name": "Центральный",
     "stadium_emails": [
-      "mstart@mail.ru",
-      "Oh-ho@mail.ru"
+      "stadion174@mail.ru"
     ],
-    "address": "Челябинская область, г. Миасс, Набережная, 29а",
-    "category": "3 «А»",
-    "capacity": "2898",
-    "allowed_capacity": "2898",
-    "turf_type": "искусственный с подогревом ()",
-    "cert_number": "СтRU.К276А01319-2",
-    "cert_valid_to": "26.09.2026"
+    "address": "г. Челябинск, ул. Коммуны, д. 98",
+    "category": "2",
+    "capacity": "14337",
+    "allowed_capacity": "7597*",
+    "turf_type": "искусственный без подогрева",
+    "cert_number": "СтRU.К276А01342-2",
+    "cert_valid_to": "31.10.2026"
   }
 }
