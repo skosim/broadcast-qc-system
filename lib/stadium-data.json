@@ -83,7 +83,20 @@
     "cert_number": "СтRU.К276А01444",
     "cert_valid_to": "15.03.2028"
   },
-  "Ротор": null,
+  "Ротор": {
+    "stadium_name": "«Волгоград Арена»",
+    "stadium_emails": [
+      "volgograd.arena2018@mail.ru"
+    ],
+    "address": "г. Волгоград, проспект им. В.И. Ленина, д. 76",
+    "category": "В",
+    "capacity": "44600",
+    "allowed_capacity": "44600",
+    "turf_type": "натуральный с подогревом",
+    "cert_number": "СтRU.К276А01304",
+    "cert_valid_to": "30.07.2026",
+    "note": "Без права проведения официальных спортивных соревнований, определённых решением Правительства РФ в соответствии с частью 2.2 статьи 20 ФЗ «О физической культуре и спорте в РФ»"
+  },
   "СКА-Хабаровск": {
     "stadium_name": "Футбольный стадион им. В.И. Ленина",
     "stadium_emails": [
@@ -261,7 +274,19 @@
     "cert_number": "СтRU.К276А01285",
     "cert_valid_to": "04.07.2026"
   },
-  "Иртыш": null,
+  "Иртыш": {
+    "stadium_name": "«Красная Звезда» (крытое футбольное поле)",
+    "stadium_emails": [
+      "redstar2007@inbox.ru"
+    ],
+    "address": "г. Омск, ул. Масленникова, д. 142/1",
+    "category": "3 «А»",
+    "capacity": "3000",
+    "allowed_capacity": "3000",
+    "turf_type": "искусственный с подогревом (манеж)",
+    "cert_number": "СтRU.К276А01329-2",
+    "cert_valid_to": "04.10.2026"
+  },
   "Калуга": {
     "stadium_name": "Спутник",
     "stadium_emails": [
@@ -374,7 +399,21 @@
     "cert_number": "СтRU.К276А01326",
     "cert_valid_to": "30.09.2026"
   },
-  "Динамо-2 (Москва)": null,
+  "Динамо-2 (Москва)": {
+    "stadium_name": "«Спортивный комплекс «Новые Химки» АУ «Арена Химки»",
+    "stadium_emails": [
+      "Ustinov-totti@mail.ru",
+      "office@arena-khimki.ru"
+    ],
+    "address": "Московская область, г. Химки, ул. Машинцева, д. 2",
+    "category": "3 «А»",
+    "capacity": "2350",
+    "allowed_capacity": "1502*",
+    "turf_type": "искусственный с подогревом",
+    "cert_number": "СтRU.К276А01412-2",
+    "cert_valid_to": "28.08.2027",
+    "note": "Без доступа зрителей на Западную трибуну"
+  },
   "Динамо-Брянск": {
     "stadium_name": "Динамо",
     "stadium_emails": [
@@ -389,7 +428,20 @@
     "cert_number": "СтRU.К276А01278-2",
     "cert_valid_to": "04.07.2026"
   },
-  "Динамо-Владивосток": null,
+  "Динамо-Владивосток": {
+    "stadium_name": "«Динамо»",
+    "stadium_emails": [
+      "dinamo.vl@mail.ru",
+      "dinamo.lar@mail.ru"
+    ],
+    "address": "г. Владивосток, ул. Адмирала Фокина, д. 1",
+    "category": "3 «А»",
+    "capacity": "9948",
+    "allowed_capacity": "9948",
+    "turf_type": "искусственный с подогревом",
+    "cert_number": "СтRU.К276А01333",
+    "cert_valid_to": "25.10.2026"
+  },
   "Динамо (Киров)": {
     "stadium_name": "КОГАУ ДО «ВятСШОР»",
     "stadium_emails": [
@@ -515,7 +567,20 @@
     "cert_number": "СтRU.К276А01442",
     "cert_valid_to": "01.03.2028"
   },
-  "Кызылташ": null,
+  "Кызылташ": {
+    "stadium_name": "Стадион открытый универсальный с натуральным покрытием для футбола и искусственным покрытием для лёгкой атлетики («Авангард»)",
+    "stadium_emails": [
+      "usb_avangard@mail.ru",
+      "ursov.sok.avangard@mail.ru"
+    ],
+    "address": "г. Ялта, ул. Бирюкова, д. 2а",
+    "category": "3 «Б»",
+    "capacity": "4000",
+    "allowed_capacity": "4000",
+    "turf_type": "натуральный без подогрева",
+    "cert_number": "СтRU.К276А01382",
+    "cert_valid_to": "26.05.2027"
+  },
   "Нарт": {
     "stadium_name": "Нарт",
     "stadium_emails": [
@@ -966,7 +1031,20 @@
       "cert_valid_to": "11.07.2026"
     }
   },
-  "Ротор-2": null,
+  "Ротор-2": {
+    "stadium_name": "«Волгоград Арена»",
+    "stadium_emails": [
+      "volgograd.arena2018@mail.ru"
+    ],
+    "address": "г. Волгоград, проспект им. В.И. Ленина, д. 76",
+    "category": "В",
+    "capacity": "44600",
+    "allowed_capacity": "44600",
+    "turf_type": "натуральный с подогревом",
+    "cert_number": "СтRU.К276А01304",
+    "cert_valid_to": "30.07.2026",
+    "note": "Без права проведения официальных спортивных соревнований, определённых решением Правительства РФ в соответствии с частью 2.2 статьи 20 ФЗ «О физической культуре и спорте в РФ»"
+  },
   "Рязань": {
     "stadium_name": "Рязань Арена",
     "stadium_emails": [
@@ -981,7 +1059,19 @@
     "cert_number": "СтRU.К276А01421-2",
     "cert_valid_to": "06.10.2027"
   },
-  "Салют Белгород": null,
+  "Салют Белгород": {
+    "stadium_name": "«Спартак»",
+    "stadium_emails": [
+      "spartak.4725@mail.ru"
+    ],
+    "address": "г. Старый Оскол, микрорайон Горняк 22а",
+    "category": "4 «А»",
+    "capacity": "600",
+    "allowed_capacity": "600",
+    "turf_type": "искусственный без подогрева",
+    "cert_number": "СтRU.К276А01360",
+    "cert_valid_to": "26.03.2027"
+  },
   "Сатурн": {
     "stadium_name": "Сатурн",
     "stadium_emails": [
