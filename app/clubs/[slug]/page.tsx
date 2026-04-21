@@ -130,6 +130,19 @@ export default async function ClubPage({
       turf_type: string | null;
       cert_number: string | null;
       cert_valid_to: string | null;
+      note?: string | null;
+      reserve_stadium?: {
+        stadium_name: string;
+        stadium_emails: string[];
+        address: string | null;
+        category: string | null;
+        capacity: string | null;
+        allowed_capacity: string | null;
+        turf_type: string | null;
+        cert_number: string | null;
+        cert_valid_to: string | null;
+        note?: string | null;
+      } | null;
     } | null;
     recurringProblems: Array<{ key: string; count: number; summary: string }>;
     nextMatch: {
@@ -454,30 +467,67 @@ export default async function ClubPage({
           </CardContent>
         </Card>
 
-        <Card>
-          <CardHeader>
-            <CardTitle>Паспорт стадиона</CardTitle>
-            <CardDescription>Данные из реестра стадионов ФНЛ.</CardDescription>
-          </CardHeader>
-          <CardContent className="grid gap-4 md:grid-cols-2">
-            {club.stadiumRegistry ? (
-              <>
-                <Info label="Стадион" value={club.stadiumRegistry.stadium_name} className="md:col-span-2" />
-                <Info label="Адрес" value={club.stadiumRegistry.address ?? "Не указан"} className="md:col-span-2" />
-                <Info label="Категория / Разряд" value={club.stadiumRegistry.category ?? "Не указана"} />
-                <Info label="Тип газона" value={club.stadiumRegistry.turf_type ?? "Не указан"} />
-                <Info label="Вместимость" value={club.stadiumRegistry.capacity ?? "Не указана"} />
-                <Info label="Допустимая вместимость" value={club.stadiumRegistry.allowed_capacity ?? "Не указана"} />
-                <Info label="Номер сертификата" value={club.stadiumRegistry.cert_number ?? "Не указан"} />
-                <Info label="Срок действия сертификата" value={club.stadiumRegistry.cert_valid_to ?? "Не указан"} />
-              </>
-            ) : (
-              <div className="md:col-span-2 rounded-2xl border border-dashed border-border/70 bg-secondary/20 p-5 text-sm text-muted-foreground">
-                Данные по стадиону в реестре ФНЛ не найдены.
-              </div>
-            )}
-          </CardContent>
-        </Card>
+        <div className="flex flex-col gap-4">
+          <Card>
+            <CardHeader>
+              <CardTitle>Паспорт стадиона</CardTitle>
+              <CardDescription>Данные из реестра стадионов ФНЛ.</CardDescription>
+            </CardHeader>
+            <CardContent className="grid gap-4 md:grid-cols-2">
+              {club.stadiumRegistry ? (
+                <>
+                  <Info label="Стадион" value={club.stadiumRegistry.stadium_name} className="md:col-span-2" />
+                  <Info label="Адрес" value={club.stadiumRegistry.address ?? "Не указан"} className="md:col-span-2" />
+                  {club.stadiumRegistry.note && (
+                    <div className="md:col-span-2 text-xs text-amber-600 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/30 rounded-lg px-3 py-2">{club.stadiumRegistry.note}</div>
+                  )}
+                  <Info label="Категория / Разряд" value={club.stadiumRegistry.category ?? "Не указана"} />
+                  <Info label="Тип газона" value={club.stadiumRegistry.turf_type ?? "Не указан"} />
+                  <Info label="Вместимость" value={club.stadiumRegistry.capacity ?? "Не указана"} />
+                  <Info label="Допустимая вместимость" value={club.stadiumRegistry.allowed_capacity ?? "Не указана"} />
+                  <Info label="Номер сертификата" value={club.stadiumRegistry.cert_number ?? "Не указан"} />
+                  <Info label="Срок действия сертификата" value={club.stadiumRegistry.cert_valid_to ?? "Не указан"} />
+                </>
+              ) : (
+                <div className="md:col-span-2 rounded-2xl border border-dashed border-border/70 bg-secondary/20 p-5 text-sm text-muted-foreground">
+                  Данные по стадиону в реестре ФНЛ не найдены.
+                </div>
+              )}
+            </CardContent>
+          </Card>
+
+          {club.stadiumRegistry?.reserve_stadium && (
+            <Card className="border-dashed border-border/60">
+              <CardHeader>
+                <CardTitle className="text-base">Резервный стадион</CardTitle>
+                <CardDescription>Запасная площадка из реестра стадионов ФНЛ.</CardDescription>
+              </CardHeader>
+              <CardContent className="grid gap-4 md:grid-cols-2">
+                <Info label="Стадион" value={club.stadiumRegistry.reserve_stadium.stadium_name} className="md:col-span-2" />
+                <Info label="Адрес" value={club.stadiumRegistry.reserve_stadium.address ?? "Не указан"} className="md:col-span-2" />
+                {club.stadiumRegistry.reserve_stadium.note && (
+                  <div className="md:col-span-2 text-xs text-amber-600 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/30 rounded-lg px-3 py-2">{club.stadiumRegistry.reserve_stadium.note}</div>
+                )}
+                <Info label="Категория / Разряд" value={club.stadiumRegistry.reserve_stadium.category ?? "Не указана"} />
+                <Info label="Тип газона" value={club.stadiumRegistry.reserve_stadium.turf_type ?? "Не указан"} />
+                <Info label="Вместимость" value={club.stadiumRegistry.reserve_stadium.capacity ?? "Не указана"} />
+                <Info label="Допустимая вместимость" value={club.stadiumRegistry.reserve_stadium.allowed_capacity ?? "Не указана"} />
+                <Info label="Номер сертификата" value={club.stadiumRegistry.reserve_stadium.cert_number ?? "Не указан"} />
+                <Info label="Срок действия сертификата" value={club.stadiumRegistry.reserve_stadium.cert_valid_to ?? "Не указан"} />
+                {club.stadiumRegistry.reserve_stadium.stadium_emails.length > 0 && (
+                  <div className="md:col-span-2">
+                    <div className="text-xs uppercase tracking-[0.18em] text-muted-foreground mb-2">Email стадиона</div>
+                    <div className="flex flex-wrap gap-3">
+                      {club.stadiumRegistry.reserve_stadium.stadium_emails.map((email) => (
+                        <a key={email} href={`mailto:${email}`} className="text-sm font-medium text-primary hover:underline">{email}</a>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </CardContent>
+            </Card>
+          )}
+        </div>
       </section>
 
       <Card>
