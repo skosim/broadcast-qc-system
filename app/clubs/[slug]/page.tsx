@@ -119,6 +119,7 @@ export default async function ClubPage({
       issueTags: Array<{ tag: { labelRu: string } }>;
       history: Array<{ id: string; actorName: string; actionType: string; createdAt: Date; comment: string | null }>;
     }>;
+    contacts: { name: string; phone: string } | null;
     recurringProblems: Array<{ key: string; count: number; summary: string }>;
     nextMatch: {
       id: string;
@@ -207,6 +208,26 @@ export default async function ClubPage({
         <SummaryCard label="Камерплан" value={club.stats.hasCameraPlan ? "Есть" : "Нет"} subtle />
         <SummaryCard label="Фото стадиона" value={club.stats.hasGallery ? "Есть" : "Нет"} subtle />
       </section>
+
+      {club.contacts && (
+        <Card className="border-primary/20 bg-primary/5">
+          <CardHeader className="pb-2">
+            <CardTitle className="text-lg">Контакты пресс-атташе</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-8">
+              <div>
+                <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground">Имя</p>
+                <p className="text-base font-semibold">{club.contacts.name}</p>
+              </div>
+              <div>
+                <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground">Телефон / Контакт</p>
+                <p className="text-base font-semibold">{club.contacts.phone}</p>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      )}
 
       <section className="grid gap-6 xl:grid-cols-[1.35fr_0.95fr]">
         <Card>

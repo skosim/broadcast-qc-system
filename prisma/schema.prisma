@@ -3,23 +3,23 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "sqlite"
   url      = env("DATABASE_URL")
 }
 
-enum MatchStatus {
+model MatchStatus {
   upcoming
   live
   finished
 }
 
-enum BroadcastSource {
+model BroadcastSource {
   fnl
   vk_video
   manual
 }
 
-enum BroadcastMatchMode {
+model BroadcastMatchMode {
   auto_exact
   high_confidence_auto_match
   requires_review
@@ -29,34 +29,34 @@ enum BroadcastMatchMode {
   none
 }
 
-enum IssueStatus {
+model IssueStatus {
   new
   in_review
   resolved
   archived
 }
 
-enum SyncStatus {
+model SyncStatus {
   queued
   processing
   completed
   failed
 }
 
-enum BroadcastLinkKind {
+model BroadcastLinkKind {
   fnl_match_page
   direct_stream
   manual_stream
 }
 
-enum StadiumFileKind {
+model StadiumFileKind {
   camera_plan
   gallery
   coordination
   other
 }
 
-enum SourceSystem {
+model SourceSystem {
   fnl_pro
   vk_video
   google_sheets
@@ -64,7 +64,7 @@ enum SourceSystem {
   manual
 }
 
-enum StadiumRemarkStatus {
+model StadiumRemarkStatus {
   draft
   confirmed
   resolved

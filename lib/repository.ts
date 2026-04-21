@@ -677,11 +677,21 @@ export async function getClubPageData(slug: string, options?: {
   const hasCameraPlan = club.stadium?.files.some((file) => file.kind === "camera_plan") ?? false;
   const hasGallery = club.stadium?.files.some((file) => file.kind === "gallery") ?? false;
 
+  // Load press-attache contacts
+  let contacts = null;
+  try {
+    const contactsData = require("./press-attache-contacts.json");
+    contacts = contactsData[club.name] || contactsData[club.shortName || ""] || null;
+  } catch (e) {
+    // Ignore if file doesn't exist yet
+  }
+
   return {
     season,
     seasons,
     club: {
       ...club,
+      contacts,
       stats: {
         totalIssues: issues.length,
         recentIssues: issues.filter((issue) => issue.matchId && lastThreeIds.has(issue.matchId)).length,
