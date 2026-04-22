@@ -343,7 +343,33 @@
     "cert_number": "СтRU.К276А01444",
     "cert_valid_to": "15.03.2028"
   },
-  "Сибирь": null,
+  "Сибирь": {
+    "stadium_name": "«Спартак»",
+    "stadium_emails": [
+      "spartak_nsk@mail.ru"
+    ],
+    "address": "г. Новосибирск, ул. Фрунзе, 15",
+    "category": "3 «А»",
+    "capacity": "12170",
+    "allowed_capacity": "4950*",
+    "turf_type": "искусственный с подогревом",
+    "cert_number": "СтRU.К276А01271-2",
+    "cert_valid_to": "20.06.2026",
+    "note": "Без доступа зрителей на Восточную трибуну (за исключением 19 сектора) и Северную трибуну (за исключением 10 сектора)",
+    "reserve_stadium": {
+      "stadium_name": "«Спортивный комплекс крытого футбольного манежа» (Заря)",
+      "stadium_emails": [
+        "AKorenev@admnsk.ru"
+      ],
+      "address": "г. Новосибирск, ул. Спортивная, д. 2",
+      "category": "2",
+      "capacity": "3548",
+      "allowed_capacity": "3548",
+      "turf_type": "искусственный с подогревом (манеж)",
+      "cert_number": "СтRU.К276А01442",
+      "cert_valid_to": "01.03.2028"
+    }
+  },
   "Текстильщик": {
     "stadium_name": "Текстильщик",
     "stadium_emails": [
@@ -553,7 +579,19 @@
     "cert_number": "СтRU.К276А01397",
     "cert_valid_to": "15.07.2027"
   },
-  "Дружба": null,
+  "Дружба": {
+    "stadium_name": "«Адыгейский республиканский стадион»",
+    "stadium_emails": [
+      "stadion-01@yandex.ru"
+    ],
+    "address": "г. Майкоп, ул. Гагарина, д. 7",
+    "category": "3 «А»",
+    "capacity": "13536",
+    "allowed_capacity": "13536",
+    "turf_type": "натуральный без подогрева",
+    "cert_number": "СтRU.К276А01431",
+    "cert_valid_to": "27.11.2027"
+  },
   "Заря": {
     "stadium_name": "Спортивный комплекс крытого футбольного манежа",
     "stadium_emails": [
@@ -854,7 +892,21 @@
     "cert_number": "СтRU.К276А01411-2",
     "cert_valid_to": "19.08.2027"
   },
-  "Спартак-2": null,
+  "Спартак-2": {
+    "stadium_name": "«Спартак», футбольное поле № 4",
+    "stadium_emails": [
+      "spartak@spartak.com",
+      "aivushkina@spartak.com",
+      "BorisovAP@stadionspartak.ru"
+    ],
+    "address": "г. Москва, Малый Олений переулок, д. 23, сооружение 5",
+    "category": "3 «А»",
+    "capacity": "3077",
+    "allowed_capacity": "3077",
+    "turf_type": "искусственный с подогревом",
+    "cert_number": "СтRU.К276А01359-2",
+    "cert_valid_to": "01.04.2027"
+  },
   "Тверь": {
     "stadium_name": "Стадион открытый специализированный с искусственным покрытием для футбола",
     "stadium_emails": [
