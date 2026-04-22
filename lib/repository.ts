@@ -686,6 +686,37 @@ export async function getClubPageData(slug: string, options?: {
     // Ignore if file doesn't exist yet
   }
 
+  // Load club images (stadium photos and camera plans)
+  let clubImages: { stadium_images: string[]; camera_images: string[] } | null = null;
+  try {
+    const clubImagesData = require("./club-images.json");
+    // Try to match club name to image folder key
+    // Keys in club-images.json are folder names like "Авангард", "Арсенал-2", "Динамо-Вологда", "Динамо-МХ_2"
+    // Club names in DB are like "Авангард (Курск)", "Арсенал-2 (Тула)", "Динамо-Вологда"
+    const clubName = club.name;
+    // Direct match first
+    if (clubImagesData[clubName]) {
+      clubImages = clubImagesData[clubName];
+    } else {
+      // Try to find a key that matches the beginning of the club name or vice versa
+      const keys = Object.keys(clubImagesData);
+      const matchedKey = keys.find((key) => {
+        const normalizedKey = key.replace(/_/g, " ");
+        return (
+          clubName.startsWith(normalizedKey) ||
+          normalizedKey.startsWith(clubName) ||
+          clubName.includes(normalizedKey) ||
+          normalizedKey.includes(clubName)
+        );
+      });
+      if (matchedKey) {
+        clubImages = clubImagesData[matchedKey];
+      }
+    }
+  } catch (e) {
+    // Ignore if file doesn't exist yet
+  }
+
   // Load stadium registry data
   let stadiumRegistry: {
     stadium_name: string;
@@ -712,6 +743,7 @@ export async function getClubPageData(slug: string, options?: {
       ...club,
       contacts,
       stadiumRegistry,
+      clubImages,
       stats: {
         totalIssues: issues.length,
         recentIssues: issues.filter((issue) => issue.matchId && lastThreeIds.has(issue.matchId)).length,

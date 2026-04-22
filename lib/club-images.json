@@ -1,0 +1,110 @@
+{
+  "Авангард": {
+    "display_name": "Авангард",
+    "stadium_images": [
+      "/images/clubs/Авангард/stadium/Место_размещения_трансляционнои__аппаратуры_и_комментатора.jpg",
+      "/images/clubs/Авангард/stadium/место_расположение_режиссера_трансляции_и_операторов_основнои__камеры_и_камеры_укрупнения.jpg"
+    ],
+    "camera_images": [
+      "/images/clubs/Авангард/camera/Screenshot_2026-04-22_at_09.49.44.png"
+    ]
+  },
+  "Арсенал-2": {
+    "display_name": "Арсенал-2",
+    "stadium_images": [
+      "/images/clubs/Арсенал-2/stadium/IMG_20260331_133631_042.jpg",
+      "/images/clubs/Арсенал-2/stadium/левыи__офсаи_д.jpg"
+    ],
+    "camera_images": [
+      "/images/clubs/Арсенал-2/camera/Screenshot_2026-04-22_at_09.50.23.png"
+    ]
+  },
+  "Астрахань": {
+    "display_name": "Астрахань",
+    "stadium_images": [
+      "/images/clubs/Астрахань/stadium/image-09-04-26-03-55-2.jpg",
+      "/images/clubs/Астрахань/stadium/image-09-04-26-03-55-3.jpg"
+    ],
+    "camera_images": [
+      "/images/clubs/Астрахань/camera/Screenshot_2026-04-22_at_09.51.02.png"
+    ]
+  },
+  "Балтика-2": {
+    "display_name": "Балтика-2",
+    "stadium_images": [],
+    "camera_images": [
+      "/images/clubs/Балтика-2/camera/Screenshot_2026-04-22_at_09.52.07.png"
+    ]
+  },
+  "Волна": {
+    "display_name": "Волна",
+    "stadium_images": [
+      "/images/clubs/Волна/stadium/Screenshot_2026-04-22_at_09.45.57.png"
+    ],
+    "camera_images": [
+      "/images/clubs/Волна/camera/Screenshot_2026-04-22_at_09.52.35.png"
+    ]
+  },
+  "Динамо-Вологда": {
+    "display_name": "Динамо-Вологда",
+    "stadium_images": [
+      "/images/clubs/Динамо-Вологда/stadium/XhHNir973hHkxzxvz_EAu8E2aFBAE0jGcsrJG4rZJ-imJ109T7pZolz_xi9v5yEiQUuALk2TvzZdL9tlpp7o-0iv.jpg",
+      "/images/clubs/Динамо-Вологда/stadium/XuJZyEU8OeM8oaN_ghcmKAuSgo3yzjF9FBPw98by9-8tHjPB1ZcOBRgQUKhP14gukgb3ovxQBBopO5fdQruQ0cLA.jpg"
+    ],
+    "camera_images": [
+      "/images/clubs/Динамо-Вологда/camera/Screenshot_2026-04-22_at_09.53.41.png"
+    ]
+  },
+  "Динамо-МХ_2": {
+    "display_name": "Динамо-МХ 2",
+    "stadium_images": [],
+    "camera_images": [
+      "/images/clubs/Динамо-МХ_2/camera/Screenshot_2026-04-22_at_09.48.54.png"
+    ]
+  },
+  "Дружба": {
+    "display_name": "Дружба",
+    "stadium_images": [
+      "/images/clubs/Дружба/stadium/image-31-03-26-04-25-1.jpeg"
+    ],
+    "camera_images": [
+      "/images/clubs/Дружба/camera/Screenshot_2026-04-22_at_09.55.07.png"
+    ]
+  },
+  "Енисей-2": {
+    "display_name": "Енисей-2",
+    "stadium_images": [
+      "/images/clubs/Енисей-2/stadium/OImG9o9puvctiBI72vbCvy4lu8Z76UKg2BaSsxxM858sf5Xf7d1tVUAss1bBxPjNVl2gp6qhUwoWVkrl5XjVksFh.jpg"
+    ],
+    "camera_images": [
+      "/images/clubs/Енисей-2/camera/Screenshot_2026-04-22_at_09.56.07.png"
+    ]
+  },
+  "Заря": {
+    "display_name": "Заря",
+    "stadium_images": [
+      "/images/clubs/Заря/stadium/FullSizeRender.jpg"
+    ],
+    "camera_images": [
+      "/images/clubs/Заря/camera/Screenshot_2026-04-22_at_09.58.10.png"
+    ]
+  },
+  "Звезда": {
+    "display_name": "Звезда",
+    "stadium_images": [
+      "/images/clubs/Звезда/stadium/Screenshot_2026-04-22_at_10.00.49.png"
+    ],
+    "camera_images": [
+      "/images/clubs/Звезда/camera/Screenshot_2026-04-22_at_10.00.12.png"
+    ]
+  },
+  "Иркутск": {
+    "display_name": "Иркутск",
+    "stadium_images": [
+      "/images/clubs/Иркутск/stadium/st-shakhter-cheremkhovo__2026_.jpg"
+    ],
+    "camera_images": [
+      "/images/clubs/Иркутск/camera/Screenshot_2026-04-22_at_10.01.55.png"
+    ]
+  }
+}

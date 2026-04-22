@@ -120,6 +120,7 @@ export default async function ClubPage({
       history: Array<{ id: string; actorName: string; actionType: string; createdAt: Date; comment: string | null }>;
     }>;
     contacts: { name: string; phone: string } | null;
+    clubImages: { stadium_images: string[]; camera_images: string[] } | null;
     stadiumRegistry: {
       stadium_name: string;
       stadium_emails: string[];
@@ -225,6 +226,45 @@ export default async function ClubPage({
           subtle
         />
       </section>
+
+      {club.clubImages && (club.clubImages.stadium_images.length > 0 || club.clubImages.camera_images.length > 0) && (
+        <section className="space-y-6">
+          {club.clubImages.stadium_images.length > 0 && (
+            <div className="space-y-3">
+              <h2 className="text-sm font-medium uppercase tracking-[0.18em] text-muted-foreground">Фото стадиона</h2>
+              <div className="flex flex-col gap-4">
+                {club.clubImages.stadium_images.map((src, idx) => (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img
+                    key={idx}
+                    src={src}
+                    alt={`Фото стадиона ${idx + 1}`}
+                    className="w-full max-w-full rounded-xl object-contain border border-border/50 bg-secondary/20"
+                    style={{ maxHeight: "600px" }}
+                  />
+                ))}
+              </div>
+            </div>
+          )}
+          {club.clubImages.camera_images.length > 0 && (
+            <div className="space-y-3">
+              <h2 className="text-sm font-medium uppercase tracking-[0.18em] text-muted-foreground">Камерплан</h2>
+              <div className="flex flex-col gap-4">
+                {club.clubImages.camera_images.map((src, idx) => (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img
+                    key={idx}
+                    src={src}
+                    alt={`Камерплан ${idx + 1}`}
+                    className="w-full max-w-full rounded-xl object-contain border border-border/50 bg-secondary/20"
+                    style={{ maxHeight: "600px" }}
+                  />
+                ))}
+              </div>
+            </div>
+          )}
+        </section>
+      )}
 
       <section className="grid gap-4 xl:grid-cols-4">
         <SummaryCard label="Лига" value={club.league.name} subtle />
