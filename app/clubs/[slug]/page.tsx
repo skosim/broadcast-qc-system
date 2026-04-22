@@ -4,14 +4,13 @@ import { ExternalLink } from "lucide-react";
 import { FilterLinkGroup } from "@/components/filter-link-group";
 import { IssueCard } from "@/components/issue-card";
 import { IssueTimeline } from "@/components/issue-timeline";
-import { MaterialsTabs } from "@/components/materials-tabs";
 import { ResolveIssueButton } from "@/components/resolve-issue-button";
 import { SeasonSwitcher } from "@/components/season-switcher";
 import { SectionHeader } from "@/components/section-header";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { cn, formatDate, formatDateTime, formatNumber } from "@/lib/utils";
+import { cn, formatDateTime } from "@/lib/utils";
 import { getClubPageData } from "@/lib/repository";
 
 export const dynamic = "force-dynamic";
@@ -216,62 +215,136 @@ export default async function ClubPage({
         </div>
       </div>
 
-      <section className="grid gap-4 xl:grid-cols-4">
-        <SummaryCard label="Проблем за сезон" value={String(club.stats.totalIssues)} />
-        <SummaryCard label="За последние 3 матча" value={String(club.stats.recentIssues)} />
-        <SummaryCard label="Самый частый тег" value={club.stats.mostFrequentTag} />
+      {/* Stats row: 4 compact cards */}
+      <section className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+        <SummaryCard label="Проблем за сезон" value={String(club.stats.totalIssues)} compact />
+        <SummaryCard label="За последние 3 матча" value={String(club.stats.recentIssues)} compact />
+        <SummaryCard label="Самый частый тег" value={club.stats.mostFrequentTag} compact />
         <SummaryCard
           label="Последняя проблема"
           value={club.stats.latestIssue?.normalizedSummary ?? "Пока не зафиксирована"}
+          compact
           subtle
         />
       </section>
 
-      {club.clubImages && (club.clubImages.stadium_images.length > 0 || club.clubImages.camera_images.length > 0) && (
-        <section className="space-y-6">
-          {club.clubImages.stadium_images.length > 0 && (
-            <div className="space-y-3">
-              <h2 className="text-sm font-medium uppercase tracking-[0.18em] text-muted-foreground">Фото стадиона</h2>
-              <div className="flex flex-col gap-4">
-                {club.clubImages.stadium_images.map((src, idx) => (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img
-                    key={idx}
-                    src={src}
-                    alt={`Фото стадиона ${idx + 1}`}
-                    className="w-full max-w-full rounded-xl object-contain border border-border/50 bg-secondary/20"
-                    style={{ maxHeight: "600px" }}
-                  />
-                ))}
-              </div>
-            </div>
-          )}
-          {club.clubImages.camera_images.length > 0 && (
-            <div className="space-y-3">
-              <h2 className="text-sm font-medium uppercase tracking-[0.18em] text-muted-foreground">Камерплан</h2>
-              <div className="flex flex-col gap-4">
-                {club.clubImages.camera_images.map((src, idx) => (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img
-                    key={idx}
-                    src={src}
-                    alt={`Камерплан ${idx + 1}`}
-                    className="w-full max-w-full rounded-xl object-contain border border-border/50 bg-secondary/20"
-                    style={{ maxHeight: "600px" }}
-                  />
-                ))}
-              </div>
-            </div>
-          )}
-        </section>
-      )}
-
-      <section className="grid gap-4 xl:grid-cols-4">
-        <SummaryCard label="Лига" value={club.league.name} subtle />
-        <SummaryCard label="Группа" value={club.leagueGroup?.name ?? "—"} subtle />
-        <SummaryCard label="Камерплан" value={club.stats.hasCameraPlan ? "Есть" : "Нет"} subtle />
-        <SummaryCard label="Фото стадиона" value={club.stats.hasGallery ? "Есть" : "Нет"} subtle />
+      {/* League / Group row */}
+      <section className="grid gap-3 sm:grid-cols-2">
+        <SummaryCard label="Лига" value={club.league.name} compact subtle />
+        <SummaryCard label="Группа" value={club.leagueGroup?.name ?? "—"} compact subtle />
       </section>
+
+      {/* Images + Stadium passport side-by-side */}
+      {(club.clubImages && (club.clubImages.stadium_images.length > 0 || club.clubImages.camera_images.length > 0)) || club.stadiumRegistry ? (
+        <section className="grid gap-6 xl:grid-cols-[1fr_0.85fr]">
+          {/* Left: photos */}
+          {club.clubImages && (club.clubImages.stadium_images.length > 0 || club.clubImages.camera_images.length > 0) ? (
+            <div className="space-y-5">
+              {club.clubImages.stadium_images.length > 0 && (
+                <div className="space-y-2">
+                  <h2 className="text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground">Фото стадиона</h2>
+                  <div className="flex flex-col gap-3">
+                    {club.clubImages.stadium_images.map((src, idx) => (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img
+                        key={idx}
+                        src={src}
+                        alt={`Фото стадиона ${idx + 1}`}
+                        className="w-full rounded-lg object-contain border border-border/50 bg-secondary/20"
+                        style={{ maxHeight: "340px" }}
+                      />
+                    ))}
+                  </div>
+                </div>
+              )}
+              {club.clubImages.camera_images.length > 0 && (
+                <div className="space-y-2">
+                  <h2 className="text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground">Камерплан</h2>
+                  <div className="flex flex-col gap-3">
+                    {club.clubImages.camera_images.map((src, idx) => (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img
+                        key={idx}
+                        src={src}
+                        alt={`Камерплан ${idx + 1}`}
+                        className="w-full rounded-lg object-contain border border-border/50 bg-secondary/20"
+                        style={{ maxHeight: "340px" }}
+                      />
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+          ) : (
+            <div className="rounded-2xl border border-dashed border-border/70 bg-secondary/20 p-5 text-sm text-muted-foreground">
+              Фотоматериалы пока не загружены.
+            </div>
+          )}
+
+          {/* Right: stadium passport */}
+          <div className="flex flex-col gap-4">
+            <Card>
+              <CardHeader className="pb-3">
+                <CardTitle className="text-base">Паспорт стадиона</CardTitle>
+                <CardDescription>Данные из реестра стадионов ФНЛ.</CardDescription>
+              </CardHeader>
+              <CardContent className="grid gap-3 md:grid-cols-2">
+                {club.stadiumRegistry ? (
+                  <>
+                    <Info label="Стадион" value={club.stadiumRegistry.stadium_name} className="md:col-span-2" />
+                    <Info label="Адрес" value={club.stadiumRegistry.address ?? "Не указан"} className="md:col-span-2" />
+                    {club.stadiumRegistry.note && (
+                      <div className="md:col-span-2 text-xs text-amber-600 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/30 rounded-lg px-3 py-2">{club.stadiumRegistry.note}</div>
+                    )}
+                    <Info label="Категория / Разряд" value={club.stadiumRegistry.category ?? "Не указана"} />
+                    <Info label="Тип газона" value={club.stadiumRegistry.turf_type ?? "Не указан"} />
+                    <Info label="Вместимость" value={club.stadiumRegistry.capacity ?? "Не указана"} />
+                    <Info label="Доп. вместимость" value={club.stadiumRegistry.allowed_capacity ?? "Не указана"} />
+                    <Info label="Номер сертификата" value={club.stadiumRegistry.cert_number ?? "Не указан"} />
+                    <Info label="Срок сертификата" value={club.stadiumRegistry.cert_valid_to ?? "Не указан"} />
+                  </>
+                ) : (
+                  <div className="md:col-span-2 rounded-2xl border border-dashed border-border/70 bg-secondary/20 p-5 text-sm text-muted-foreground">
+                    Данные по стадиону в реестре ФНЛ не найдены.
+                  </div>
+                )}
+              </CardContent>
+            </Card>
+
+            {club.stadiumRegistry?.reserve_stadium && (
+              <Card className="border-dashed border-border/60">
+                <CardHeader className="pb-3">
+                  <CardTitle className="text-base">Резервный стадион</CardTitle>
+                  <CardDescription>Запасная площадка из реестра стадионов ФНЛ.</CardDescription>
+                </CardHeader>
+                <CardContent className="grid gap-3 md:grid-cols-2">
+                  <Info label="Стадион" value={club.stadiumRegistry.reserve_stadium.stadium_name} className="md:col-span-2" />
+                  <Info label="Адрес" value={club.stadiumRegistry.reserve_stadium.address ?? "Не указан"} className="md:col-span-2" />
+                  {club.stadiumRegistry.reserve_stadium.note && (
+                    <div className="md:col-span-2 text-xs text-amber-600 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/30 rounded-lg px-3 py-2">{club.stadiumRegistry.reserve_stadium.note}</div>
+                  )}
+                  <Info label="Категория / Разряд" value={club.stadiumRegistry.reserve_stadium.category ?? "Не указана"} />
+                  <Info label="Тип газона" value={club.stadiumRegistry.reserve_stadium.turf_type ?? "Не указан"} />
+                  <Info label="Вместимость" value={club.stadiumRegistry.reserve_stadium.capacity ?? "Не указана"} />
+                  <Info label="Доп. вместимость" value={club.stadiumRegistry.reserve_stadium.allowed_capacity ?? "Не указана"} />
+                  <Info label="Номер сертификата" value={club.stadiumRegistry.reserve_stadium.cert_number ?? "Не указан"} />
+                  <Info label="Срок сертификата" value={club.stadiumRegistry.reserve_stadium.cert_valid_to ?? "Не указан"} />
+                  {club.stadiumRegistry.reserve_stadium.stadium_emails.length > 0 && (
+                    <div className="md:col-span-2">
+                      <div className="text-xs uppercase tracking-[0.18em] text-muted-foreground mb-2">Email стадиона</div>
+                      <div className="flex flex-wrap gap-3">
+                        {club.stadiumRegistry.reserve_stadium.stadium_emails.map((email) => (
+                          <a key={email} href={`mailto:${email}`} className="text-sm font-medium text-primary hover:underline">{email}</a>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </CardContent>
+              </Card>
+            )}
+          </div>
+        </section>
+      ) : null}
 
       {(club.contacts || club.stadiumRegistry) && (
         <Card className="border-primary/20 bg-primary/5">
@@ -496,80 +569,6 @@ export default async function ClubPage({
         </div>
       </section>
 
-      <section className="grid gap-6 xl:grid-cols-[1.1fr_1fr]">
-        <Card>
-          <CardHeader>
-            <CardTitle>Камерпланы и фото</CardTitle>
-            <CardDescription>Файлы со стадиона и материалы для подготовки эфира.</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <MaterialsTabs materials={club.stadium?.files ?? []} />
-          </CardContent>
-        </Card>
-
-        <div className="flex flex-col gap-4">
-          <Card>
-            <CardHeader>
-              <CardTitle>Паспорт стадиона</CardTitle>
-              <CardDescription>Данные из реестра стадионов ФНЛ.</CardDescription>
-            </CardHeader>
-            <CardContent className="grid gap-4 md:grid-cols-2">
-              {club.stadiumRegistry ? (
-                <>
-                  <Info label="Стадион" value={club.stadiumRegistry.stadium_name} className="md:col-span-2" />
-                  <Info label="Адрес" value={club.stadiumRegistry.address ?? "Не указан"} className="md:col-span-2" />
-                  {club.stadiumRegistry.note && (
-                    <div className="md:col-span-2 text-xs text-amber-600 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/30 rounded-lg px-3 py-2">{club.stadiumRegistry.note}</div>
-                  )}
-                  <Info label="Категория / Разряд" value={club.stadiumRegistry.category ?? "Не указана"} />
-                  <Info label="Тип газона" value={club.stadiumRegistry.turf_type ?? "Не указан"} />
-                  <Info label="Вместимость" value={club.stadiumRegistry.capacity ?? "Не указана"} />
-                  <Info label="Допустимая вместимость" value={club.stadiumRegistry.allowed_capacity ?? "Не указана"} />
-                  <Info label="Номер сертификата" value={club.stadiumRegistry.cert_number ?? "Не указан"} />
-                  <Info label="Срок действия сертификата" value={club.stadiumRegistry.cert_valid_to ?? "Не указан"} />
-                </>
-              ) : (
-                <div className="md:col-span-2 rounded-2xl border border-dashed border-border/70 bg-secondary/20 p-5 text-sm text-muted-foreground">
-                  Данные по стадиону в реестре ФНЛ не найдены.
-                </div>
-              )}
-            </CardContent>
-          </Card>
-
-          {club.stadiumRegistry?.reserve_stadium && (
-            <Card className="border-dashed border-border/60">
-              <CardHeader>
-                <CardTitle className="text-base">Резервный стадион</CardTitle>
-                <CardDescription>Запасная площадка из реестра стадионов ФНЛ.</CardDescription>
-              </CardHeader>
-              <CardContent className="grid gap-4 md:grid-cols-2">
-                <Info label="Стадион" value={club.stadiumRegistry.reserve_stadium.stadium_name} className="md:col-span-2" />
-                <Info label="Адрес" value={club.stadiumRegistry.reserve_stadium.address ?? "Не указан"} className="md:col-span-2" />
-                {club.stadiumRegistry.reserve_stadium.note && (
-                  <div className="md:col-span-2 text-xs text-amber-600 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/30 rounded-lg px-3 py-2">{club.stadiumRegistry.reserve_stadium.note}</div>
-                )}
-                <Info label="Категория / Разряд" value={club.stadiumRegistry.reserve_stadium.category ?? "Не указана"} />
-                <Info label="Тип газона" value={club.stadiumRegistry.reserve_stadium.turf_type ?? "Не указан"} />
-                <Info label="Вместимость" value={club.stadiumRegistry.reserve_stadium.capacity ?? "Не указана"} />
-                <Info label="Допустимая вместимость" value={club.stadiumRegistry.reserve_stadium.allowed_capacity ?? "Не указана"} />
-                <Info label="Номер сертификата" value={club.stadiumRegistry.reserve_stadium.cert_number ?? "Не указан"} />
-                <Info label="Срок действия сертификата" value={club.stadiumRegistry.reserve_stadium.cert_valid_to ?? "Не указан"} />
-                {club.stadiumRegistry.reserve_stadium.stadium_emails.length > 0 && (
-                  <div className="md:col-span-2">
-                    <div className="text-xs uppercase tracking-[0.18em] text-muted-foreground mb-2">Email стадиона</div>
-                    <div className="flex flex-wrap gap-3">
-                      {club.stadiumRegistry.reserve_stadium.stadium_emails.map((email) => (
-                        <a key={email} href={`mailto:${email}`} className="text-sm font-medium text-primary hover:underline">{email}</a>
-                      ))}
-                    </div>
-                  </div>
-                )}
-              </CardContent>
-            </Card>
-          )}
-        </div>
-      </section>
-
       <Card>
         <CardHeader>
           <CardTitle>Стадионные замечания</CardTitle>
@@ -673,12 +672,12 @@ function MatchSummaryBlock({
   );
 }
 
-function SummaryCard({ label, value, subtle }: { label: string; value: string; subtle?: boolean }) {
+function SummaryCard({ label, value, subtle, compact }: { label: string; value: string; subtle?: boolean; compact?: boolean }) {
   return (
     <Card className={cn(subtle ? "bg-secondary/30" : "bg-card")}>
-      <CardContent className="space-y-2 pt-6">
+      <CardContent className={cn("space-y-1", compact ? "pt-4 pb-4" : "space-y-2 pt-6")}>
         <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground">{label}</div>
-        <div className="text-lg font-semibold text-foreground">{value}</div>
+        <div className={cn("font-semibold text-foreground", compact ? "text-base" : "text-lg")}>{value}</div>
       </CardContent>
     </Card>
   );

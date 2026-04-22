@@ -976,17 +976,18 @@
     "cert_valid_to": "15.10.2027"
   },
   "Арсенал-2": {
-    "stadium_name": "Академия «Арсенал»",
+    "stadium_name": "Футбольный стадион Академии «Арсенал»",
     "stadium_emails": [
-      "zamdir@arsenaltula.ru"
+      "tula.arsenal@mail.ru"
     ],
-    "address": "г. Тула, пр. Ленина, д. 87",
+    "address": "г. Тула, проспект Ленина, д. 87",
     "category": "4 «А»",
-    "capacity": "20074",
-    "allowed_capacity": "14935*",
-    "turf_type": "искусственный с подогревом",
-    "cert_number": "СтRU.К276А01324-2",
-    "cert_valid_to": "30.09.2026"
+    "capacity": "1604",
+    "allowed_capacity": "1604",
+    "turf_type": "искусственный с подогревом (100 × 64)",
+    "cert_number": "СтRU.К276А01325",
+    "cert_valid_to": "30.09.2026",
+    "note": "Юридический адрес организации: 301835, Тульская область, Богородицкий район, г. Богородицк, ул. Коммунаров, д. 46, каб. 13. Email организации: office@arsenaltula.ru, zamdir@arsenaltula.ru"
   },
   "Волна": {
     "stadium_name": "Стадион открытый универсальный с искусственным покрытием для футбола",
@@ -1164,7 +1165,6 @@
     "cert_number": "СтRU.К276А01299",
     "cert_valid_to": "23.07.2026"
   },
-
   "Шумбрат": {
     "stadium_name": "Старт",
     "stadium_emails": [
