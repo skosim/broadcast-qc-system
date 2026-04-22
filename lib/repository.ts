@@ -687,7 +687,7 @@ export async function getClubPageData(slug: string, options?: {
   }
 
   // Load club images (stadium photos and camera plans)
-  let clubImages: { stadium_images: string[]; camera_images: string[] } | null = null;
+  let clubImages: { stadium_images: string[]; camera_images: string[]; reserve_images?: { stadium_images: string[]; camera_images: string[] } } | null = null;
   try {
     const clubImagesData = require("./club-images.json");
     // Try to match club name to image folder key
@@ -695,22 +695,34 @@ export async function getClubPageData(slug: string, options?: {
     // Club names in DB are like "Авангард (Курск)", "Арсенал-2 (Тула)", "Динамо-Вологда"
     const clubName = club.name;
     // Direct match first
-    if (clubImagesData[clubName]) {
-      clubImages = clubImagesData[clubName];
-    } else {
-      // Try to find a key that matches the beginning of the club name or vice versa
+    const findImageEntry = (name: string) => {
+      if (clubImagesData[name]) return clubImagesData[name];
       const keys = Object.keys(clubImagesData);
       const matchedKey = keys.find((key) => {
         const normalizedKey = key.replace(/_/g, " ");
         return (
-          clubName.startsWith(normalizedKey) ||
-          normalizedKey.startsWith(clubName) ||
-          clubName.includes(normalizedKey) ||
-          normalizedKey.includes(clubName)
+          name.startsWith(normalizedKey) ||
+          normalizedKey.startsWith(name) ||
+          name.includes(normalizedKey) ||
+          normalizedKey.includes(name)
         );
       });
-      if (matchedKey) {
-        clubImages = clubImagesData[matchedKey];
+      return matchedKey ? clubImagesData[matchedKey] : null;
+    };
+
+    const primaryEntry = findImageEntry(clubName);
+    if (primaryEntry) {
+      clubImages = { ...primaryEntry };
+      // For clubs with a reserve stadium that has its own images, load reserve_images
+      // Convention: if the club name is "Енисей" or "Енисей-2", also load the other set
+      // Primary (Енисей) = manege photos; Reserve (Енисей-2) = Стадион им. Ленинского комсомола
+      const reserveKey = clubName.includes("Енисей") && !clubName.includes("-2")
+        ? "Енисей-2"
+        : clubName.includes("Енисей-2")
+        ? "Енисей"
+        : null;
+      if (reserveKey && clubImagesData[reserveKey] && clubImages) {
+        clubImages.reserve_images = clubImagesData[reserveKey];
       }
     }
   } catch (e) {
@@ -718,7 +730,7 @@ export async function getClubPageData(slug: string, options?: {
   }
 
   // Load stadium registry data
-  let stadiumRegistry: {
+  type StadiumEntry = {
     stadium_name: string;
     stadium_emails: string[];
     address: string | null;
@@ -728,7 +740,10 @@ export async function getClubPageData(slug: string, options?: {
     turf_type: string | null;
     cert_number: string | null;
     cert_valid_to: string | null;
-  } | null = null;
+    note?: string;
+    reserve_stadium?: StadiumEntry;
+  };
+  let stadiumRegistry: StadiumEntry | null = null;
   try {
     const stadiumData = require("./stadium-data.json");
     stadiumRegistry = stadiumData[club.name] || stadiumData[club.shortName || ""] || null;

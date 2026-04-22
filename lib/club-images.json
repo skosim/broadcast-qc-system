@@ -11,10 +11,7 @@
   },
   "Арсенал-2": {
     "display_name": "Арсенал-2",
-    "stadium_images": [
-      "/images/clubs/Арсенал-2/stadium/IMG_20260331_133631_042.jpg",
-      "/images/clubs/Арсенал-2/stadium/левыи__офсаи_д.jpg"
-    ],
+    "stadium_images": [],
     "camera_images": [
       "/images/clubs/Арсенал-2/camera/Screenshot_2026-04-22_at_09.50.23.png"
     ]
@@ -33,7 +30,7 @@
     "display_name": "Балтика-2",
     "stadium_images": [],
     "camera_images": [
-      "/images/clubs/Балтика-2/camera/Screenshot_2026-04-22_at_09.52.07.png"
+      "/images/clubs/Балтика-2/camera/Screenshot_2026-04-22_at_10.43.07.png"
     ]
   },
   "Волна": {
@@ -55,13 +52,6 @@
       "/images/clubs/Динамо-Вологда/camera/Screenshot_2026-04-22_at_09.53.41.png"
     ]
   },
-  "Динамо-МХ_2": {
-    "display_name": "Динамо-МХ 2",
-    "stadium_images": [],
-    "camera_images": [
-      "/images/clubs/Динамо-МХ_2/camera/Screenshot_2026-04-22_at_09.48.54.png"
-    ]
-  },
   "Дружба": {
     "display_name": "Дружба",
     "stadium_images": [
@@ -74,7 +64,14 @@
   "Енисей-2": {
     "display_name": "Енисей-2",
     "stadium_images": [
-      "/images/clubs/Енисей-2/stadium/OImG9o9puvctiBI72vbCvy4lu8Z76UKg2BaSsxxM858sf5Xf7d1tVUAss1bBxPjNVl2gp6qhUwoWVkrl5XjVksFh.jpg"
+      "/images/clubs/Енисей-2/stadium/OImG9o9puvctiBI72vbCvy4lu8Z76UKg2BaSsxxM858sf5Xf7d1tVUAss1bBxPjNVl2gp6qhUwoWVkrl5XjVksFh.jpg",
+      "/images/clubs/Енисей-2/stadium/L6s1r6QQ-SWKfzSwE934wsrCazDIeDdhh33ssEyBVif9ze3DqGiihBfQdbeSafR8nHZIeJzoDU0kmz5QH5PtzyfD.jpg",
+      "/images/clubs/Енисей-2/stadium/d4_eB5P6bEvtjDyqDycx5UbrKc-QBBQvfqS6pLyEVZW-QW5Np4_E0pHZ2uknsZXtI2dQLYJb07VaepPw99Xpxh0g.jpg",
+      "/images/clubs/Енисей-2/stadium/lp7sECMZFCco7mDWe6RpFGS6ICNtMnDZ9O5QMp-AHcxZvObP2sVFBQ1BH7GunWQouA1MzIvgREYCSBC3LMcLWgGV.jpg",
+      "/images/clubs/Енисей-2/stadium/oEEbQxpqAepHR-ZrmpYgXKZmhdmrDTo6DwjCi4lhWYyOPLhP4KmXjppxIhdRHSa3YcIGqJf_9yL9Uu3IQ_L8BcRF.jpg",
+      "/images/clubs/Енисей-2/stadium/on1iQ9JmoWuNGShZ321-OOS0IBnOm8d_ICuNDTy7BOoXXp-iNAQaq74ajH5waR02Ga5gavvYO-9K2cXPZbw-k26d.jpg",
+      "/images/clubs/Енисей-2/stadium/рк_Центральный_стадион.jpg",
+      "/images/clubs/Енисей-2/stadium/рк_манеж6.jpg"
     ],
     "camera_images": [
       "/images/clubs/Енисей-2/camera/Screenshot_2026-04-22_at_09.56.07.png"
@@ -105,6 +102,28 @@
     ],
     "camera_images": [
       "/images/clubs/Иркутск/camera/Screenshot_2026-04-22_at_10.01.55.png"
+    ]
+  },
+  "Динамо-2 (Махачкала)": {
+    "display_name": "Динамо-2 (Махачкала)",
+    "stadium_images": [],
+    "camera_images": [
+      "/images/clubs/Динамо-МХ_2/camera/Screenshot_2026-04-22_at_09.48.54.png"
+    ]
+  },
+  "Енисей": {
+    "display_name": "Енисей",
+    "stadium_images": [
+      "/images/clubs/Енисей/stadium/рк_манеж1.jpg",
+      "/images/clubs/Енисей/stadium/рк.jpg",
+      "/images/clubs/Енисей/stadium/рк_манеж.jpg",
+      "/images/clubs/Енисей/stadium/рк_манеж2.jpg",
+      "/images/clubs/Енисей/stadium/рк_манеж4.jpg",
+      "/images/clubs/Енисей/stadium/рк_манеж5.jpg",
+      "/images/clubs/Енисей/stadium/рк_манеж7.jpg"
+    ],
+    "camera_images": [
+      "/images/clubs/Енисей/camera/Screenshot_2026-04-22_at_11.28.01.png"
     ]
   }
 }

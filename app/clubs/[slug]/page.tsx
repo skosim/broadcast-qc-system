@@ -119,7 +119,7 @@ export default async function ClubPage({
       history: Array<{ id: string; actorName: string; actionType: string; createdAt: Date; comment: string | null }>;
     }>;
     contacts: { name: string; phone: string } | null;
-    clubImages: { stadium_images: string[]; camera_images: string[] } | null;
+    clubImages: { stadium_images: string[]; camera_images: string[]; reserve_images?: { stadium_images: string[]; camera_images: string[] } } | null;
     stadiumRegistry: {
       stadium_name: string;
       stadium_emails: string[];
@@ -234,44 +234,85 @@ export default async function ClubPage({
         <SummaryCard label="Группа" value={club.leagueGroup?.name ?? "—"} compact subtle />
       </section>
 
-      {/* Images + Stadium passport side-by-side */}
-      {(club.clubImages && (club.clubImages.stadium_images.length > 0 || club.clubImages.camera_images.length > 0)) || club.stadiumRegistry ? (
+      {/* Images + Stadium passport + Contacts side-by-side */}
+      {(club.clubImages && (club.clubImages.stadium_images.length > 0 || club.clubImages.camera_images.length > 0)) || club.stadiumRegistry || club.contacts ? (
         <section className="grid gap-6 xl:grid-cols-[1fr_0.85fr]">
           {/* Left: photos */}
           {club.clubImages && (club.clubImages.stadium_images.length > 0 || club.clubImages.camera_images.length > 0) ? (
-            <div className="space-y-5">
-              {club.clubImages.stadium_images.length > 0 && (
-                <div className="space-y-2">
-                  <h2 className="text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground">Фото стадиона</h2>
-                  <div className="flex flex-col gap-3">
-                    {club.clubImages.stadium_images.map((src, idx) => (
-                      // eslint-disable-next-line @next/next/no-img-element
-                      <img
-                        key={idx}
-                        src={src}
-                        alt={`Фото стадиона ${idx + 1}`}
-                        className="w-full rounded-lg object-contain border border-border/50 bg-secondary/20"
-                        style={{ maxHeight: "340px" }}
-                      />
-                    ))}
+            <div className="space-y-8">
+              {/* Primary stadium images (manege for Енисей, main stadium for others) */}
+              <div className="space-y-5">
+                {club.clubImages.stadium_images.length > 0 && (
+                  <div className="space-y-2">
+                    <h2 className="text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground">Фото стадиона</h2>
+                    <div className="flex flex-col gap-3">
+                      {club.clubImages.stadium_images.map((src, idx) => (
+                        // eslint-disable-next-line @next/next/no-img-element
+                        <img
+                          key={idx}
+                          src={src}
+                          alt={`Фото стадиона ${idx + 1}`}
+                          className="w-full rounded-lg object-contain border border-border/50 bg-secondary/20"
+                          style={{ maxHeight: "340px" }}
+                        />
+                      ))}
+                    </div>
                   </div>
-                </div>
-              )}
-              {club.clubImages.camera_images.length > 0 && (
-                <div className="space-y-2">
-                  <h2 className="text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground">Камерплан</h2>
-                  <div className="flex flex-col gap-3">
-                    {club.clubImages.camera_images.map((src, idx) => (
-                      // eslint-disable-next-line @next/next/no-img-element
-                      <img
-                        key={idx}
-                        src={src}
-                        alt={`Камерплан ${idx + 1}`}
-                        className="w-full rounded-lg object-contain border border-border/50 bg-secondary/20"
-                        style={{ maxHeight: "340px" }}
-                      />
-                    ))}
+                )}
+                {club.clubImages.camera_images.length > 0 && (
+                  <div className="space-y-2">
+                    <h2 className="text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground">Камерплан</h2>
+                    <div className="flex flex-col gap-3">
+                      {club.clubImages.camera_images.map((src, idx) => (
+                        // eslint-disable-next-line @next/next/no-img-element
+                        <img
+                          key={idx}
+                          src={src}
+                          alt={`Камерплан ${idx + 1}`}
+                          className="w-full rounded-lg object-contain border border-border/50 bg-secondary/20"
+                          style={{ maxHeight: "340px" }}
+                        />
+                      ))}
+                    </div>
                   </div>
+                )}
+              </div>
+
+              {/* Reserve stadium images (Стадион им. Ленинского комсомола for Енисей) */}
+              {club.clubImages.reserve_images && (club.clubImages.reserve_images.stadium_images.length > 0 || club.clubImages.reserve_images.camera_images.length > 0) && (
+                <div className="space-y-5 border-t border-border/40 pt-6">
+                  <h2 className="text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground">Фото резервного стадиона</h2>
+                  {club.clubImages.reserve_images.stadium_images.length > 0 && (
+                    <div className="flex flex-col gap-3">
+                      {club.clubImages.reserve_images.stadium_images.map((src, idx) => (
+                        // eslint-disable-next-line @next/next/no-img-element
+                        <img
+                          key={idx}
+                          src={src}
+                          alt={`Фото резервного стадиона ${idx + 1}`}
+                          className="w-full rounded-lg object-contain border border-border/50 bg-secondary/20"
+                          style={{ maxHeight: "340px" }}
+                        />
+                      ))}
+                    </div>
+                  )}
+                  {club.clubImages.reserve_images.camera_images.length > 0 && (
+                    <div className="space-y-2">
+                      <h2 className="text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground">Камерплан (резервный)</h2>
+                      <div className="flex flex-col gap-3">
+                        {club.clubImages.reserve_images.camera_images.map((src, idx) => (
+                          // eslint-disable-next-line @next/next/no-img-element
+                          <img
+                            key={idx}
+                            src={src}
+                            alt={`Камерплан резервного стадиона ${idx + 1}`}
+                            className="w-full rounded-lg object-contain border border-border/50 bg-secondary/20"
+                            style={{ maxHeight: "340px" }}
+                          />
+                        ))}
+                      </div>
+                    </div>
+                  )}
                 </div>
               )}
             </div>
@@ -281,7 +322,7 @@ export default async function ClubPage({
             </div>
           )}
 
-          {/* Right: stadium passport */}
+          {/* Right: stadium passport + contacts */}
           <div className="flex flex-col gap-4">
             <Card>
               <CardHeader className="pb-3">
@@ -342,44 +383,45 @@ export default async function ClubPage({
                 </CardContent>
               </Card>
             )}
+
+            {/* Contacts block — below passport */}
+            {(club.contacts || (club.stadiumRegistry && club.stadiumRegistry.stadium_emails.length > 0)) && (
+              <Card className="border-primary/20 bg-primary/5">
+                <CardHeader className="pb-2">
+                  <CardTitle className="text-base">Контакты</CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  {club.contacts && (
+                    <div>
+                      <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground mb-2">Пресс-атташе</p>
+                      <div className="flex flex-col gap-3">
+                        <div>
+                          <p className="text-xs text-muted-foreground">Имя</p>
+                          <p className="text-sm font-semibold">{club.contacts.name}</p>
+                        </div>
+                        <div>
+                          <p className="text-xs text-muted-foreground">Телефон / Контакт</p>
+                          <p className="text-sm font-semibold">{club.contacts.phone}</p>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                  {club.stadiumRegistry && club.stadiumRegistry.stadium_emails.length > 0 && (
+                    <div>
+                      <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground mb-2">Стадион</p>
+                      <div className="flex flex-wrap gap-3">
+                        {club.stadiumRegistry.stadium_emails.map((email) => (
+                          <a key={email} href={`mailto:${email}`} className="text-sm font-semibold text-primary hover:underline">{email}</a>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </CardContent>
+              </Card>
+            )}
           </div>
         </section>
       ) : null}
-
-      {(club.contacts || club.stadiumRegistry) && (
-        <Card className="border-primary/20 bg-primary/5">
-          <CardHeader className="pb-2">
-            <CardTitle className="text-lg">Контакты</CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            {club.contacts && (
-              <div>
-                <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground mb-2">Пресс-атташе</p>
-                <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-8">
-                  <div>
-                    <p className="text-xs text-muted-foreground">Имя</p>
-                    <p className="text-base font-semibold">{club.contacts.name}</p>
-                  </div>
-                  <div>
-                    <p className="text-xs text-muted-foreground">Телефон / Контакт</p>
-                    <p className="text-base font-semibold">{club.contacts.phone}</p>
-                  </div>
-                </div>
-              </div>
-            )}
-            {club.stadiumRegistry && club.stadiumRegistry.stadium_emails.length > 0 && (
-              <div>
-                <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground mb-2">Стадион — {club.stadiumRegistry.stadium_name}</p>
-                <div className="flex flex-wrap gap-4">
-                  {club.stadiumRegistry.stadium_emails.map((email) => (
-                    <a key={email} href={`mailto:${email}`} className="text-base font-semibold text-primary hover:underline">{email}</a>
-                  ))}
-                </div>
-              </div>
-            )}
-          </CardContent>
-        </Card>
-      )}
 
       <section className="grid gap-6 xl:grid-cols-[1.35fr_0.95fr]">
         <Card>
