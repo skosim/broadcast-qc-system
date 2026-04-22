@@ -713,16 +713,17 @@ export async function getClubPageData(slug: string, options?: {
     const primaryEntry = findImageEntry(clubName);
     if (primaryEntry) {
       clubImages = { ...primaryEntry };
-      // For clubs with a reserve stadium that has its own images, load reserve_images
-      // Convention: if the club name is "Енисей" or "Енисей-2", also load the other set
-      // Primary (Енисей) = manege photos; Reserve (Енисей-2) = Стадион им. Ленинского комсомола
-      const reserveKey = clubName.includes("Енисей") && !clubName.includes("-2")
-        ? "Енисей-2"
-        : clubName.includes("Енисей-2")
-        ? "Енисей"
-        : null;
-      if (reserveKey && clubImagesData[reserveKey] && clubImages) {
-        clubImages.reserve_images = clubImagesData[reserveKey];
+      // For Енисей/Енисей-2: cross-reference the other set as reserve_images
+      // (unless the entry already has reserve_images from club-images.json)
+      if (clubImages && !clubImages.reserve_images) {
+        const reserveKey = clubName.includes("Енисей") && !clubName.includes("-2")
+          ? "Енисей-2"
+          : clubName.includes("Енисей-2")
+          ? "Енисей"
+          : null;
+        if (reserveKey && clubImagesData[reserveKey] && clubImages) {
+          clubImages.reserve_images = clubImagesData[reserveKey];
+        }
       }
     }
   } catch (e) {

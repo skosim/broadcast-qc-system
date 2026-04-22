@@ -52,7 +52,7 @@
       "turf_type": "искусственный с подогревом (105 × 68)",
       "cert_number": "СтRU.К276А01323",
       "cert_valid_to": "30.09.2026",
-      "note": "Юридический адрес: 660064, Россия, Красноярский край, г. Красноярск, остров Отдыха, 15А. Email организации: reception@kkor24.ru"
+      "note": null
     }
   },
   "КАМАЗ": {
@@ -165,18 +165,32 @@
     "cert_valid_to": "31.10.2027"
   },
   "Урал": {
-    "stadium_name": "Уралмаш",
+    "stadium_name": "«Екатеринбург Арена»",
     "stadium_emails": [
-      "urfaso@egov66.ru",
-      "terehov@urfaso.ru"
+      "arena.info@egov66.ru",
+      "m.rutynskij@egov66.ru"
     ],
-    "address": "г. Екатеринбург, ул. Фестивальная, д. 8",
-    "category": "3 «А»",
-    "capacity": "10044",
-    "allowed_capacity": "10044",
-    "turf_type": "натуральный с подогревом",
-    "cert_number": "СтRU.К276А01309-2",
-    "cert_valid_to": "14.08.2026"
+    "address": "г. Екатеринбург, ул. Репина, 5",
+    "category": "1 «СИБ»",
+    "capacity": "35000",
+    "allowed_capacity": "27857",
+    "turf_type": "натуральный с подогревом (105 × 68)",
+    "cert_number": "СтRU.К276А01446",
+    "cert_valid_to": "15.03.2028",
+    "reserve_stadium": {
+      "stadium_name": "«Крытый футбольный манеж «Урал»",
+      "stadium_emails": [
+        "urfaso@yandex.ru",
+        "shadrinagr@urfaso.ru"
+      ],
+      "address": "г. Екатеринбург, ул. Фестивальная, д. 10",
+      "category": "2",
+      "capacity": "3040",
+      "allowed_capacity": "3040",
+      "turf_type": "искусственный с подогревом (манеж) (105 × 68)",
+      "cert_number": "СтRU.К276А01357-4",
+      "cert_valid_to": "01.03.2027"
+    }
   },
   "Уфа": {
     "stadium_name": "Нефтяник",
@@ -619,7 +633,7 @@
     "turf_type": "искусственный без подогрева (105 × 65)",
     "cert_number": "СтRU.К276А01265-2",
     "cert_valid_to": "14.06.2026",
-    "note": "Юридический адрес организации: 347863, Ростовская область, р-н Каменский, х. Абрамовка, ул. Ленина д. 27Г. Email организации: aleksey7719d@yandex.ru"
+    "note": null
   },
   "Кызылташ": {
     "stadium_name": "Стадион открытый универсальный с натуральным покрытием для футбола и искусственным покрытием для лёгкой атлетики («Авангард»)",
@@ -838,21 +852,22 @@
       "turf_type": "искусственный с подогревом (105 × 68)",
       "cert_number": "СтRU.К276А01323",
       "cert_valid_to": "30.09.2026",
-      "note": "Юридический адрес: 660064, Россия, Красноярский край, г. Красноярск, остров Отдыха, 15А. Email организации: reception@kkor24.ru"
+      "note": null
     }
   },
   "Звезда": {
-    "stadium_name": "Красная Звезда",
+    "stadium_name": "«Многофункциональный физкультурно-оздоровительный комплекс с футбольным полем «NOVA ARENA»",
     "stadium_emails": [
-      "redstar2007@inbox.ru"
+      "jurist1@novaarena.ru",
+      "sport-dir@novaarena.ru"
     ],
-    "address": "г. Омск, ул. Масленникова, д. 142/1",
-    "category": "3 «А»",
-    "capacity": "3000",
-    "allowed_capacity": "3000",
-    "turf_type": "искусственный с подогревом (манеж)",
-    "cert_number": "СтRU.К276А01329-2",
-    "cert_valid_to": "04.10.2026"
+    "address": "г. Санкт-Петербург, пр. Гражданский, д. 100, стр. 1, 2",
+    "category": "4 «Б»",
+    "capacity": "1592",
+    "allowed_capacity": "900",
+    "turf_type": "искусственный без подогрева (102 × 66)",
+    "cert_number": "СтRU.К276А01454",
+    "cert_valid_to": "15.04.2028"
   },
   "Иркутск": {
     "stadium_name": "Шахтёр",
@@ -1017,7 +1032,7 @@
     "turf_type": "искусственный с подогревом (100 × 64)",
     "cert_number": "СтRU.К276А01325",
     "cert_valid_to": "30.09.2026",
-    "note": "Юридический адрес организации: 301835, Тульская область, Богородицкий район, г. Богородицк, ул. Коммунаров, д. 46, каб. 13. Email организации: office@arsenaltula.ru, zamdir@arsenaltula.ru"
+    "note": null
   },
   "Волна": {
     "stadium_name": "«МБУ Заволжский ФОК» — Стадион открытый универсальный с искусственным покрытием для футбола",
@@ -1346,18 +1361,32 @@
     "cert_valid_to": "26.07.2026"
   },
   "Урал-2": {
-    "stadium_name": "Бажовия",
+    "stadium_name": "«Крытый футбольный манеж «Урал»",
     "stadium_emails": [
-      "resh98@yandex.ru",
-      "aip@fc-ural.ru"
+      "urfaso@yandex.ru",
+      "shadrinagr@urfaso.ru"
     ],
-    "address": "Свердловская обл., Сысертский р-н, 2 км западнее г. Сысерть",
-    "category": "4 «Б»",
-    "capacity": "500",
-    "allowed_capacity": "500",
-    "turf_type": "искусственный с подогревом",
-    "cert_number": "СтRU.К276А01403",
-    "cert_valid_to": "24.07.2027"
+    "address": "г. Екатеринбург, ул. Фестивальная, д. 10",
+    "category": "2",
+    "capacity": "3040",
+    "allowed_capacity": "3040",
+    "turf_type": "искусственный с подогревом (манеж) (105 × 68)",
+    "cert_number": "СтRU.К276А01357-4",
+    "cert_valid_to": "01.03.2027",
+    "reserve_stadium": {
+      "stadium_name": "«Екатеринбург Арена»",
+      "stadium_emails": [
+        "arena.info@egov66.ru",
+        "m.rutynskij@egov66.ru"
+      ],
+      "address": "г. Екатеринбург, ул. Репина, 5",
+      "category": "1 «СИБ»",
+      "capacity": "35000",
+      "allowed_capacity": "27857",
+      "turf_type": "натуральный с подогревом (105 × 68)",
+      "cert_number": "СтRU.К276А01446",
+      "cert_valid_to": "15.03.2028"
+    }
   },
   "Химик": {
     "stadium_name": "Химик",
